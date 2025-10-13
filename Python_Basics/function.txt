@@ -1,0 +1,350 @@
+
+# ======================================================
+
+# Functional Programming & Lambda
+
+>>> def multiply_by_2(data):
+...     return data*2
+...
+>>> multiply_by_2
+<function multiply_by_2 at 0x000001FB10502160>
+>>> def do_this_and_print(func, data):
+...     print(func(data))
+...
+>>> do_this_and_print(multiply_by_2,125)
+250
+>>>
+>>> func_example_reference = multiply_by_2
+>>> func_example_reference(23)
+46
+>>> def multiply_by_3(data):
+...     return data*3
+...
+>>> do_this_and_print(multiply_by_3, 125)
+375
+>>> # Lambda
+>>> do_this_and_print(lambda data:data*3, 125)
+375
+>>> do_this_and_print(lambda data:data*5, 125)
+625
+>>> do_this_and_print(lambda data:data*data, 125)
+15625
+>>> do_this_and_print(lambda data:data ** 2, 125)
+15625
+>>> do_this_and_print(lambda data:data ** 3, 125)
+1953125
+>>> do_this_and_print(lambda data:len(data), "Test")
+4
+>>>
+
+# ======================================================
+
+# Functional Programming lambda with filter
+
+C:\Users\Frank>python
+Python 3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+
+>>> numbers = [1, 89, 54, 35]
+>>> filter(lambda x : x%2==1, numbers)
+<filter object at 0x00000194E3EC91E0>
+>>> list(filter(lambda x : x%2==1, numbers))
+[1, 89, 35]
+>>> list(filter(lambda x : x%2==0, numbers))
+[54]
+
+>>> # In python, Any Non-zero value will be consider as true
+>>> list(filter(lambda x : x%2, numbers))
+[1, 89, 35]
+
+
+>>> words = ["Apple", "Ant", "Bat"]
+>>> list( filter (lambda x : x.endswith('at'), words))
+['Bat']
+>>> list (filter (lambda x : len(x)==3 , words))
+['Ant', 'Bat']
+>>> list (filter (lambda x : x.startswith('A'), words))
+['Apple', 'Ant']
+>>>
+
+# ======================================================
+
+# Functional Programming lambda with map
+
+>>> words = ["Apple", "Ant", "Bat"]
+>>> "Apple".upper
+<built-in method upper of str object at 0x00000194E38A0090>
+>>> "Apple".upper()
+'APPLE'
+>>> map (lambda x : x.upper(), words)
+<map object at 0x00000194E3EC95D0>
+>>> list (map (lambda x : x.upper(), words))
+['APPLE', 'ANT', 'BAT']
+>>> list (map (lambda x : x==len(x), words))
+[False, False, False]
+>>> list (map (lambda x : len(x), words))
+[5, 3, 3]
+>>> numbers = [1, 5, 2, 9]
+>>> list (map (lambda x : x**2, numbers))
+[1, 25, 4, 81]
+>>> list (map (lambda x : x**2, range(1,11)))
+[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+>>> list (map (lambda x : x**3, range(1,11)))
+[1, 8, 27, 64, 125, 216, 343, 512, 729, 1000]
+>>>
+
+# ======================================================
+
+# Functional Programming lambda with reduce
+
+>>> from functools import reduce
+>>> numbers = [3, 15, 12, 10]
+>>> sum(numbers)
+40
+>>> max(numbers)
+15
+>>> reduce( lambda x,y:x+y, numbers)
+40
+>>> reduce( lambda x,y:x*y, numbers)
+5400
+>>> reduce( lambda x,y:max(x,y), numbers)
+15
+>>> reduce( lambda x,y:min(x,y), numbers)
+3
+>>> words = ['Apple', 'Ant', 'Bat']
+>>> reduce( lambda x,y : x if len(x)>len(y) else y, words)
+'Apple'
+>>>
+
+# ======================================================
+
+>>> numbers = [3, 7, 8, 15, 24, 35, 46]
+>>> list( filter( lambda x : x%2==0, numbers))
+[8, 24, 46]
+>>> list( map( lambda x : x**2, filter( lambda x : x%2==0, numbers)))
+[64, 576, 2116]
+>>> sum( map( lambda x : x**2, filter( lambda x : x%2==0, numbers)))
+2756
+>>> reduce( lambda x,y:x+y, map( lambda x : x**2, filter( lambda x : x%2==0, numbers)))
+2756
+>>>
+
+>>> months = [('Jan', 31), ('Feb', 28), ('Mar', 31)]
+>>> tuple_ex = ('Dec', 31)
+>>> tuple_ex[0]
+'Dec'
+>>> tuple_ex[1]
+31
+>>> map( lambda x:x[1], months)
+<map object at 0x00000194E3EC9600>
+>>> list( map( lambda x:x[1], months))
+[31, 28, 31]
+>>> sum( map( lambda x:x[1], months))
+90
+>>> reduce( lambda x,y:x if len(x)>len(y) else y , months)
+('Mar', 31)
+>>> reduce( lambda x,y:x if x[1]>y[1] else y , months)
+('Mar', 31)
+>>> reduce( lambda x,y:x if x[1]>y[1] else y , months)[0]
+'Mar'
+>>> reduce( lambda x,y:x if x[1]>y[1] else y , months)[1]
+31
+>>> reduce( lambda x,y:x if x[1]<y[1] else y , months)
+('Feb', 28)
+>>> reduce( lambda x,y:x if x[1]<y[1] else y , months)[0]
+'Feb'
+>>> reduce( lambda x,y:x if x[1]<y[1] else y , months)[1]
+28
+
+# ======================================================
+
+#MATH MODULE
+
+>>> import math
+>>> math.
+math.acos(       math.comb(       math.exp(        math.fsum(       math.isqrt(      math.nan         math.sinh(
+math.acosh(      math.copysign(   math.exp2(       math.gamma(      math.lcm(        math.nextafter(  math.sqrt(
+math.asin(       math.cos(        math.expm1(      math.gcd(        math.ldexp(      math.perm(       math.sumprod(
+math.asinh(      math.cosh(       math.fabs(       math.hypot(      math.lgamma(     math.pi          math.tan(
+math.atan(       math.degrees(    math.factorial(  math.inf         math.log(        math.pow(        math.tanh(
+math.atan2(      math.dist(       math.floor(      math.isclose(    math.log10(      math.prod(       math.tau
+math.atanh(      math.e           math.fma(        math.isfinite(   math.log1p(      math.radians(    math.trunc(
+math.cbrt(       math.erf(        math.fmod(       math.isinf(      math.log2(       math.remainder(  math.ulp(
+math.ceil(       math.erfc(       math.frexp(      math.isnan(      math.modf(       math.sin(
+
+>>> from math import *
+>>> gcd(10)
+10
+>>> gcd(100)
+100
+>>> gcd(100, 84)
+4
+>>> floor(2.771)
+2
+>>> cos(20)
+0.40808206181339196
+>>> sin(90)
+0.8939966636005579
+>>> ceil(9.4)
+10
+
+>>> from math import gcd
+>>> gcd (12, 144)
+>>> 12
+
+# ======================================================
+
+# MATH MODULE & DECIMAL
+
+>>> print(4.5 - 3.2)
+1.2999999999999998
+
+>>> import decimal
+>>> from decimal import Decimal
+>>> value1 = Decimal('4.5')
+>>> value2 = Decimal('3.2')
+>>> value1 - value2
+Decimal('1.3')
+
+>>> import math
+>>> math.pi
+3.141592653589793
+>>> math.e
+2.718281828459045
+>>> math.factorial(10)
+3628800
+>>> math.ceil(5.5)
+6
+>>> math.ceil(-5.5)
+-5
+>>>
+
+# ======================================================
+
+>>> import statistics
+>>> statistics.
+statistics.Counter(            statistics.covariance(         statistics.kde_random(         statistics.pvariance(
+statistics.Decimal(            statistics.defaultdict(        statistics.linear_regression(  statistics.quantiles(
+statistics.Fraction(           statistics.erf(                statistics.log(                statistics.random
+statistics.LinearRegression(   statistics.exp(                statistics.math                statistics.reduce(
+statistics.NormalDist(         statistics.fabs(               statistics.mean(               statistics.repeat(
+statistics.StatisticsError(    statistics.fmean(              statistics.median(             statistics.sin(
+statistics.acos(               statistics.fsum(               statistics.median_grouped(     statistics.sqrt(
+statistics.asin(               statistics.geometric_mean(     statistics.median_high(        statistics.stdev(
+statistics.atan(               statistics.groupby(            statistics.median_low(         statistics.sumprod(
+statistics.bisect_left(        statistics.harmonic_mean(      statistics.mode(               statistics.sys
+statistics.bisect_right(       statistics.hypot(              statistics.multimode(          statistics.tan(
+statistics.correlation(        statistics.isfinite(           statistics.namedtuple(         statistics.tau
+statistics.cos(                statistics.isinf(              statistics.numbers             statistics.variance(
+statistics.cosh(               statistics.itemgetter(         statistics.pi
+statistics.count(              statistics.kde(                statistics.pstdev(
+
+
+>>> marks = [1, 6, 9, 23, 2, 7]
+>>> statistics.mean(marks)
+8
+
+>>> statistics.median(marks)
+6.5
+>>> statistics.median_high(marks)
+7
+>>> statistics.median_low(marks)
+6
+>>>
+
+# ======================================================
+
+# COLLECTIONS MODULE
+
+>>> from collections import deque
+>>> deque.
+deque.append(      deque.copy(        deque.extendleft(  deque.maxlen       deque.popleft(     deque.rotate(
+deque.appendleft(  deque.count(       deque.index(       deque.mro()        deque.remove(
+deque.clear(       deque.extend(      deque.insert(      deque.pop(         deque.reverse(
+
+>>> queue = deque(['Zero', 'One', 'Two'])
+>>> queue.pop()
+'Two'
+>>> queue
+deque(['Zero', 'One'])
+>>> queue.append('Two')
+>>> queue.append('Three')
+>>> queue.append('Four')
+>>> queue.append('Five')
+>>> queue.appendleft('Minus one')
+>>> queue
+deque(['Minus one', 'Zero', 'One', 'Two', 'Three', 'Four', 'Five'])
+>>> queue.pop()
+'Five'
+>>> queue.popleft()
+'Minus one'
+>>> queue
+deque(['Zero', 'One', 'Two', 'Three', 'Four'])
+>>>
+
+# ======================================================
+# DATE MODULE
+
+>>> import datetime
+>>> datetime.
+datetime.MAXYEAR        datetime.UTC            datetime.datetime(      datetime.time(          datetime.timezone(
+datetime.MINYEAR        datetime.date(          datetime.datetime_CAPI  datetime.timedelta(     datetime.tzinfo(
+
+>>> datetime.datetime.                                                                                                                             
+datetime.datetime.combine(           datetime.datetime.isocalendar(       datetime.datetime.resolution         datetime.datetime.tzname(                                                                                                                                                                datetime.datetime.ctime(             datetime.datetime.isoformat(         datetime.datetime.second             datetime.datetime.utcfromtimestamp(
+datetime.datetime.date(              datetime.datetime.isoweekday(        datetime.datetime.strftime(          datetime.datetime.utcnow()
+datetime.datetime.day                datetime.datetime.max                datetime.datetime.strptime(          datetime.datetime.utcoffset(
+datetime.datetime.dst(               datetime.datetime.microsecond        datetime.datetime.time(              datetime.datetime.utctimetuple(
+datetime.datetime.fold               datetime.datetime.min                datetime.datetime.timestamp(         datetime.datetime.weekday(
+datetime.datetime.fromisocalendar(   datetime.datetime.minute             datetime.datetime.timetuple(         datetime.datetime.year
+datetime.datetime.fromisoformat(     datetime.datetime.month              datetime.datetime.timetz(
+datetime.datetime.fromordinal(       datetime.datetime.mro()              datetime.datetime.today()
+datetime.datetime.fromtimestamp(     datetime.datetime.now(               datetime.datetime.toordinal(
+
+
+>>> datetime.datetime.today()
+datetime.datetime(2025, 10, 13, 21, 54, 24, 125209)
+>>> today_date = datetime.datetime.today()
+>>> today_date
+datetime.datetime(2025, 10, 13, 21, 55, 4, 561939)
+>>> today_date.year
+2025
+>>> today_date.month
+10
+>>> today_date.day
+13
+>>> today_date.hour
+21
+>>> today_date.minute
+55
+>>> today_date.second
+4
+>>> today_date.microsecond
+561939
+>>> some_date = datetime.datetime(2025, 12, 12)
+>>> some_date
+datetime.datetime(2025, 12, 12, 0, 0)
+>>> some_date = datetime.datetime(2025, 12, 12, 12, 12, 12)
+>>> some_date
+datetime.datetime(2025, 12, 12, 12, 12, 12)
+>>> today_date.date()
+datetime.date(2025, 10, 13)
+>>> today_date.time()
+datetime.time(21, 55, 4, 561939)
+>>> some_date.date()
+datetime.date(2025, 12, 12)
+>>> some_date.time()
+datetime.time(12, 12, 12)
+
+>>> day = some_date
+>>> day
+datetime.datetime(2025, 12, 12, 12, 12, 12)
+>>> day + datetime.timedelta(days=90)
+datetime.datetime(2026, 3, 12, 12, 12, 12)
+>>> day + datetime.timedelta(weeks=90)
+datetime.datetime(2027, 9, 3, 12, 12, 12)
+>>> day + datetime.timedelta(weeks=3)
+datetime.datetime(2026, 1, 2, 12, 12, 12)
+>>> day + datetime.timedelta(hours=48)
+datetime.datetime(2025, 12, 14, 12, 12, 12)
+>>>
