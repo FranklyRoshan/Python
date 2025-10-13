@@ -1,0 +1,740 @@
+
+# ============================= LIST =============================
+>>> marks = [99, 96, 89, 100, 92]
+>>> sum(marks)
+476
+>>> max(marks)
+100
+>>> min(marks)
+89
+>>> len(marks)
+5
+>>> marks.append(97)
+>>> marks
+[99, 96, 89, 100, 92, 97]
+>>> marks.insert(3, 91)
+>>> marks
+[99, 96, 89, 91, 100, 92, 97] 
+>>> marks.remove(89)
+>>> marks
+[99, 96, 91, 100, 92, 97]
+>>> 90 in marks
+False
+>>> 91 in marks
+True
+>>> marks.index(100)
+3
+>>> marks.index(80)
+Traceback (most recent call last):
+  File "<python-input-20>", line 1, in <module>
+    marks.index(80)
+    ~~~~~~~~~~~^^^^
+ValueError: 80 is not in list
+>>> for mark in marks:
+...     print(mark)
+...
+99
+96
+91
+100
+92
+97
+>>>
+
+# ======================================================
+
+>>> animals = ['Antelope', 'Bear', 'Cat', 'Dog', 'Elk']
+>>> len(animals)
+5
+>>> sum(animals)
+Traceback (most recent call last):
+  File "<python-input-24>", line 1, in <module>
+    sum(animals)
+    ~~~^^^^^^^^^
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+
+>>> animals.append('Fox')
+>>> animals
+['Antelope', 'Bear', 'Cat', 'Dog', 'Elk', 'Fox']
+>>> animals.remove('Elk')
+>>> animals
+['Antelope', 'Bear', 'Cat', 'Dog', 'Fox']
+>>> animals.insert(4, 'Elephant')
+>>> animals
+['Antelope', 'Bear', 'Cat', 'Dog', 'Elephant', 'Fox']
+>>> animals[2]
+'Cat'
+>>> animals[0]
+'Antelope'
+>>> del animals[1]
+>>> animals
+['Antelope', 'Cat', 'Dog', 'Elephant', 'Fox']
+>>> animals.append('Giraffe')
+>>> animals
+['Antelope', 'Cat', 'Dog', 'Elephant', 'Fox', 'Giraffe']
+>>> animals.extend('Fox')
+>>> animals
+['Antelope', 'Cat', 'Dog', 'Elephant', 'Fox', 'Giraffe', 'F', 'o', 'x']
+>>> animals.remove('F')
+>>> animals.remove('o')
+>>> animals.remove('x')
+>>> animals
+['Antelope', 'Cat', 'Dog', 'Elephant', 'Fox', 'Giraffe']
+>>> animals.insert(1, 'Buffalo')
+>>> animals
+['Antelope', 'Buffalo', 'Cat', 'Dog', 'Elephant', 'Fox', 'Giraffe']
+>>> animals = animals + ['Horse', 'Ibex', 'Jaguar']
+>>> animals
+['Antelope', 'Buffalo', 'Cat', 'Dog', 'Elephant', 'Fox', 'Giraffe', 'Horse', 'Ibex', 'Jaguar']
+>>> animals += ['Kangaroo', 'Lion', 'Margay']
+>>> animals
+['Antelope', 'Buffalo', 'Cat', 'Dog', 'Elephant', 'Fox', 'Giraffe', 'Horse', 'Ibex', 'Jaguar', 'Kangaroo', 'Lion', 'Margay']
+>>> animals.append(100)
+>>> animals.append(3.14)
+>>> animals.append('A')
+>>> animals.append(True)
+>>> animals
+['Antelope', 'Buffalo', 'Cat', 'Dog', 'Elephant', 'Fox', 'Giraffe', 'Horse', 'Ibex', 'Jaguar', 'Kangaroo', 'Lion', 'Margay', 100, 3.14, 'A', True]
+>>>
+
+# ======================================================
+
+# SLICING & DICING
+>>> numbers = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine']
+>>> len(numbers)
+10
+>>> # Slicing
+>>> numbers[2:6]
+['Two', 'Three', 'Four', 'Five']
+>>> numbers[:6]
+['Zero', 'One', 'Two', 'Three', 'Four', 'Five']
+>>> numbers[3:]
+['Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine']
+>>> # Dicing
+>>> numbers[1:8:2]
+['One', 'Three', 'Five', 'Seven']
+>>> numbers[1:8:3]
+['One', 'Four', 'Seven']
+>>> numbers[::3]
+['Zero', 'Three', 'Six', 'Nine']
+>>> # Reverse
+>>> numbers[::-1]
+['Nine', 'Eight', 'Seven', 'Six', 'Five', 'Four', 'Three', 'Two', 'One', 'Zero']
+>>> numbers[::-3]
+['Nine', 'Six', 'Three', 'Zero']
+>>> del numbers[5:7]
+>>> numbers
+['Zero', 'One', 'Two', 'Three', 'Four', 'Seven', 'Eight', 'Nine']
+>>> numbers = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten']
+>>> numbers[3:7] = [3,4,5,6]
+>>> numbers
+['Zero', 'One', 'Two', 3, 4, 5, 6, 'Seven', 'Eight', 'Nine', 'Ten']
+>>>
+
+# ======================================================
+
+# REVERSE & REVERSED, SORT & SORTED
+
+>>> numbers = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine']
+>>> numbers.reverse()
+>>> numbers
+['Nine', 'Eight', 'Seven', 'Six', 'Five', 'Four', 'Three', 'Two', 'One', 'Zero']
+>>> numbers = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine']
+>>> numbers
+['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine']
+>>> reversed(numbers)
+<list_reverseiterator object at 0x000001ACC12DA410>
+>>> for number in reversed(numbers):
+...     print(number)
+...
+Nine
+Eight
+Seven
+Six
+Five
+Four
+Three
+Two
+One
+Zero
+>>> numbers
+['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine']
+>>> numbers.sort()
+>>> numbers
+['Eight', 'Five', 'Four', 'Nine', 'One', 'Seven', 'Six', 'Three', 'Two', 'Zero']
+>>> numbers = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine']
+>>> for number in sorted(numbers):
+...     print(number)
+...
+Eight
+Five
+Four
+Nine
+One
+Seven
+Six
+Three
+Two
+Zero
+>>> numbers
+['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine']
+>>> for number in sorted(numbers, key=len):
+...     print(number)
+...
+One
+Two
+Six
+Zero
+Four
+Five
+Nine
+Three
+Seven
+Eight
+
+>>> for number in sorted(numbers, key=len, reverse = True):
+...     print(number)
+...
+Three
+Seven
+Eight
+Zero
+Four
+Five
+Nine
+One
+Two
+Six
+>>> numbers
+['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine']
+>>> numbers.sort(key=len, reverse=True)
+>>> numbers
+['Three', 'Seven', 'Eight', 'Zero', 'Four', 'Five', 'Nine', 'One', 'Two', 'Six']
+>>> numbers.sort(key=len)
+>>> numbers
+['One', 'Two', 'Six', 'Zero', 'Four', 'Five', 'Nine', 'Three', 'Seven', 'Eight']
+>>>
+
+# ======================================================
+
+# LIST AS A STACK
+# STACK (LIFO - Last In First Out)
+>>> numbers = []
+>>> numbers.append(1)
+>>> numbers.append(2)
+>>> numbers.append(3)
+>>> numbers.append(4)
+>>> numbers
+[1, 2, 3, 4]
+>>> numbers.pop()
+4
+>>> numbers
+[1, 2, 3]
+>>> numbers.pop()
+3
+>>> numbers
+[1, 2]
+>>> numbers.append(10)
+>>> numbers
+[1, 2, 10]
+>>> numbers.pop()
+10
+>>> numbers
+[1, 2]
+
+# List as a Queue
+# QUEUE (FIFO - First In First Out) 
+>>> numbers = []
+>>> numbers.append(1)
+>>> numbers.append(2)
+>>> numbers.append(3)
+>>> numbers.append(4)
+>>> numbers
+[1, 2, 3, 4]
+>>> numbers.pop(0)
+1
+>>> numbers
+[2, 3, 4]
+>>> numbers.pop(0)
+2
+>>> numbers
+[3, 4]
+>>> numbers.append(10)
+>>> numbers
+[3, 4, 10]t
+>>> numbers.pop(0)
+3
+>>> numbers
+[4, 10]
+>>>
+
+# ======================================================
+
+# LIST COMPREHENSION
+
+>>> numbers = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine']
+>>> numbers_len_four = []
+>>> for number in numbers:
+...     if(len(number) == 4):
+...         numbers_len_four.append(number)
+...
+>>> numbers_len_four
+['Zero', 'Four', 'Five', 'Nine']
+>>> numbers_len_four = [ number for number in numbers ]
+>>> numbers_len_four
+['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine']
+>>> numbers_len_four = [ len(number) for number in numbers]
+>>> numbers_len_four
+[4, 3, 3, 5, 4, 4, 3, 5, 5, 4]
+>>> numbers_len_four = [ number.upper() for number in numbers ]
+>>> numbers_len_four
+['ZERO', 'ONE', 'TWO', 'THREE', 'FOUR', 'FIVE', 'SIX', 'SEVEN', 'EIGHT', 'NINE']
+>>> numbers_len_four = [ number for number in numbers if(len(number) == 4)]
+>>> numbers_len_four
+['Zero', 'Four', 'Five', 'Nine']
+>>> values = [3, 6, 9, 1, 4, 15, 6, 3]
+>>> values_even = [ value for value in values if(number%2 == 0) ]
+>>> values_even
+[6, 4, 6]
+>>> values_odd = [ value for value in values if(number%2 != 0) ]
+>>> values_odd
+[3, 9, 1, 15, 3]
+>>>
+
+# ======================================================
+# SET
+
+>>> numbers = [1, 2, 3, 2, 1]
+>>> numbers
+[1, 2, 3, 2, 1]
+>>> numbers_set = set(numbers)
+>>> numbers_set
+{1, 2, 3}
+>>> numbers_set.add(3)
+>>> numbers_set
+{1, 2, 3}
+>>> numbers_set.add(4)
+>>> numbers_set
+{1, 2, 3, 4}
+>>> numbers_set.add(0)
+>>> numbers_set
+{0, 1, 2, 3, 4}
+>>> numbers_set.remove(0)
+>>> numbers_set
+{1, 2, 3, 4}
+>>>
+>>> numbers_set[0]
+Traceback (most recent call last):
+  File "<python-input-184>", line 1, in <module>
+    numbers_set[0]
+    ~~~~~~~~~~~^^^
+TypeError: 'set' object is not subscriptable
+>>> 1 in numbers_set
+True
+>>> 5 in numbers_set
+False
+>>> min(numbers_set)
+1
+>>> max(numbers_set)
+4
+>>> len(numbers_set)
+4
+>>> sum(numbers_set)
+10
+>>> numbers_1_to_5_set = set(range(1,6))
+>>> numbers_1_to_5_set
+{1, 2, 3, 4, 5}
+>>> numbers_4_to_10_set = set(range(4,11))
+>>> numbers_4_to_10_set
+{4, 5, 6, 7, 8, 9, 10}
+>>> # Union
+>>> numbers_1_to_5_set | numbers_4_to_10_set
+{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+>>> # Intersection
+>>> numbers_1_to_5_set & numbers_4_to_10_set
+{4, 5}
+>>> # Subtraction
+>>> numbers_1_to_5_set - numbers_4_to_10_set
+{1, 2, 3}
+>>> numbers_4_to_10_set - numbers_1_to_5_set
+{6, 7, 8, 9, 10}
+>>>
+
+# ======================================================
+
+# DICTIOINARY
+>>> occurances = dict(a=5, b=6, c=7, d=8, e=9)
+>>> occurances
+{'a': 5, 'b': 6, 'c': 7, 'd': 8, 'e': 9}
+>>> type(occurances)
+<class 'dict'>
+>>> occurances['f'] = 10
+>>> occurances
+{'a': 5, 'b': 6, 'c': 7, 'd': 8, 'e': 9, 'f': 10}
+>>> occurances['f'] = 15
+>>> occurances
+{'a': 5, 'b': 6, 'c': 7, 'd': 8, 'e': 9, 'f': 15}
+>>> occurances['f'] = 10
+>>> occurances
+{'a': 5, 'b': 6, 'c': 7, 'd': 8, 'e': 9, 'f': 10}
+>>> occurances['f']
+10
+>>> occurances['g']
+Traceback (most recent call last):
+  File "<python-input-215>", line 1, in <module>
+    occurances['g']
+    ~~~~~~~~~~^^^^^
+KeyError: 'g'
+>>> occurances.get('f')
+10
+>>> occurances.get('g')
+>>> occurances
+{'a': 5, 'b': 6, 'c': 7, 'd': 8, 'e': 9, 'f': 10}
+>>> occurances.get('f')
+10
+>>> occurances.get('g')
+>>> occurances.get('g', 11)
+11
+>>> occurances
+{'a': 5, 'b': 6, 'c': 7, 'd': 8, 'e': 9, 'f': 10}
+>>> occurances.keys()
+dict_keys(['a', 'b', 'c', 'd', 'e', 'f'])
+>>> occurances.values()
+dict_values([5, 6, 7, 8, 9, 10])
+>>> occurances.items()
+dict_items([('a', 5), ('b', 6), ('c', 7), ('d', 8), ('e', 9), ('f', 10)])
+>>> for (key, value) in occurances.items():
+...     print(f"{key} {value}")
+...
+a 5
+b 6
+c 7
+d 8
+e 9
+f 10
+>>> occurances['a'] = 0
+>>> occurances
+{'a': 0, 'b': 6, 'c': 7, 'd': 8, 'e': 9, 'f': 10}
+>>> del occurances['a']
+>>>
+>>> occurances
+{'b': 6, 'c': 7, 'd': 8, 'e': 9, 'f': 10}
+>>>
+
+# ======================================================
+
+# SUMMARY OF list, set , dictionary, tuple
+
+>>> str = "This is an awesome occasion. It is so amazing."
+
+>>> # List
+>>> list = [ i for i in range(1,11)]
+>>> squares_list = [ i*i for i in range(1,11) ]
+>>> type(list)
+<class 'list'>
+>>> squares_list
+[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+
+>>> # Set
+>>> set = set(list)
+>>> squares_set = { i*i for i in range(1,11)}
+>>> type(squares_set)
+<class 'set'>
+>>> squares_set
+{64, 1, 4, 36, 100, 9, 16, 49, 81, 25}
+
+>>> # Dictionary
+>>> squares_dict = { i:i*i for i in range (1,11)}
+>>> type(squares_dict)
+<class 'dict'>
+>>> squares_dict
+{1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81, 10: 100}
+
+# Nuanced things b/w the data structure
+>>> type({})
+<class 'dict'>
+>>> type ({1})
+<class 'set'>
+>>> type ({'A' : 1})
+<class 'dict'>
+>>> type(())
+<class 'tuple'>
+>>> type([])
+<class 'list'>
+>>>
+
+# ======================================================
+
+# Diff b/w list, tuple, set, dictionary
+Feature             List                         Tuple                         Set                              Dictionary
+--------------------------------------------------------------------------------------------------------------------------------------------
+Definition          Ordered, mutable collection   Ordered, immutable collection  Unordered, unique items          Key-value pair collection
+Syntax              [ ]                          ( )                            { }                              {key: value}
+Order Maintained    ✅ Yes                        ✅ Yes (Python 3.7+)            ❌ No                            ✅ Yes (Python 3.7+)
+Mutability          ✅ Mutable                    ❌ Immutable                    ✅ Mutable                       ✅ Mutable (keys immutable)
+Duplicates Allowed  ✅ Yes                        ✅ Yes                          ❌ No                            ❌ No (keys must be unique)
+Indexing/Slicing    ✅ Yes                        ✅ Yes                          ❌ No                            ✅ By keys
+Access Type         Index-based                   Index-based                    Value-based                      Key-based
+Example             [1, 2, 3]                     (1, 2, 3)                      {1, 2, 3}                        {"a": 1, "b": 2}
+Use Case            Ordered data storage          Fixed data (constants)          Unique items, fast lookup        Mapped relationships
+
+# ======================================================
+# TUPLE
+
+>>> def  create_frank():
+...     return 'Frank', '12345', 'USA'
+...
+>>> frank = create_frank()
+>>> type(frank)
+<class 'tuple'>
+>>> name, number, country = frank
+>>> frank
+('Frank', '12345', 'USA')
+>>> name
+'Frank'
+>>> number
+'12345'
+>>> country
+'USA'
+>>> # Destructing
+>>> len(frank)
+3
+>>> frank[0]
+'Frank'
+>>> frank[1]
+'12345'
+>>> frank[2]
+'USA'
+>>> frank[1] = '54321'
+Traceback (most recent call last):
+  File "<python-input-13>", line 1, in <module>
+    frank[1] = '54321'
+    ~~~~~^^^
+TypeError: 'tuple' object does not support item assignment
+>>>
+>>>
+>>> person = ('Frank', 7, 'Japan')
+>>> person = 'Frank', 5, 'Japan'
+>>> type(person)
+<class 'tuple'>
+>>> name, age, country = person
+>>> name, age = person
+Traceback (most recent call last):
+  File "<python-input-20>", line 1, in <module>
+    name, age = person
+    ^^^^^^^^^
+ValueError: too many values to unpack (expected 2)
+>>>
+>>>
+>>> x = 0
+>>> y = 1
+>>> x, y = 0, 1
+>>> x, y = y, x
+>>> x
+1
+>>> y
+0
+>>> x = (0)
+>>> type(x)
+<class 'int'>
+>>> x = (0,)
+>>> type(x)
+<class 'tuple'>
+
+# ======================================================
+# EXCEPTION HANDELING
+
+C:\Users\Frank>python
+Python 3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> i = 0
+>>> j = 10/i
+Traceback (most recent call last):
+  File "<python-input-3>", line 1, in <module>
+    j = 10/i
+        ~~^~
+ZeroDivisionError: division by zero
+>>> 2 + '2'
+Traceback (most recent call last):
+  File "<python-input-4>", line 1, in <module>
+    2 + '2'
+    ~~^~~~~
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+>>> values = [2, '2']
+>>> sum(values)
+Traceback (most recent call last):
+  File "<python-input-6>", line 1, in <module>
+    sum(values)
+    ~~~^^^^^^^^
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+>>> value
+Traceback (most recent call last):
+  File "<python-input-7>", line 1, in <module>
+    value
+NameError: name 'value' is not defined. Did you mean: 'values'?
+>>> values.non_existing_value()
+Traceback (most recent call last):
+  File "<python-input-8>", line 1, in <module>
+    values.non_exiting_value()
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'non_exiting_value'
+>>> values.non_existing_value
+Traceback (most recent call last):
+  File "<python-input-9>", line 1, in <module>
+    values.non_existing_value
+AttributeError: 'list' object has no attribute 'non_existing_value'
+
+
+>>> import builtins
+>>> help(builtins)
+Help on built-in module builtins:
+
+NAME
+    builtins - Built-in functions, types, exceptions, and other objects.
+
+DESCRIPTION
+    This module provides direct access to all 'built-in'
+    identifiers of Python; for example, builtins.len is
+    the full name for the built-in function len().
+
+    This module is not normally accessed explicitly by most
+    applications, but can be useful in modules that provide
+    objects with the same name as a built-in value, but in
+    which the built-in of that name is also needed.
+
+CLASSES
+    object
+        BaseException
+            BaseExceptionGroup
+                ExceptionGroup(BaseExceptionGroup, Exception)
+            Exception
+                ArithmeticError
+                    FloatingPointError
+                    OverflowError
+                    ZeroDivisionError
+                AssertionError
+                AttributeError
+                BufferError
+                EOFError
+                ImportError
+                    ModuleNotFoundError
+                LookupError
+                    IndexError
+                    KeyError
+                MemoryError
+                NameError
+                    UnboundLocalError
+                OSError
+                    BlockingIOError
+                    ChildProcessError
+                    ConnectionError
+                        BrokenPipeError
+                        ConnectionAbortedError
+                        ConnectionRefusedError
+                        ConnectionResetError
+                    FileExistsError
+                    FileNotFoundError
+                    InterruptedError
+                    IsADirectoryError
+                    NotADirectoryError
+                    PermissionError
+                    ProcessLookupError
+                    TimeoutError
+                ReferenceError
+                RuntimeError
+                    NotImplementedError
+                    PythonFinalizationError
+                    RecursionError
+                StopAsyncIteration
+                StopIteration
+                SyntaxError
+                    IndentationError
+                        TabError
+                SystemError
+                TypeError
+                ValueError
+                    UnicodeError
+                        UnicodeDecodeError
+                        UnicodeEncodeError
+                        UnicodeTranslateError
+                Warning
+                    BytesWarning
+                    DeprecationWarning
+                    EncodingWarning
+                    FutureWarning
+                    ImportWarning
+                    PendingDeprecationWarning
+                    ResourceWarning
+                    RuntimeWarning
+                    SyntaxWarning
+                    UnicodeWarning
+                    UserWarning
+            GeneratorExit
+            KeyboardInterrupt
+            SystemExit
+        bytearray
+        bytes
+        classmethod
+        complex
+        dict
+        enumerate
+        filter
+        float
+        frozenset
+        int
+            bool
+        list
+        map
+        memoryview
+        property
+        range
+        reversed
+        set
+        slice
+        staticmethod
+        str
+        super
+        tuple
+        type
+        zip
+
+# ======================================================
+
+# Functional Programming & Lambda
+
+>>> def multiply_by_2(data):
+...     return data*2
+...
+>>> multiply_by_2
+<function multiply_by_2 at 0x000001FB10502160>
+>>> def do_this_and_print(func, data):
+...     print(func(data))
+...
+>>> do_this_and_print(multiply_by_2,125)
+250
+>>>
+>>> func_example_reference = multiply_by_2
+>>> func_example_reference(23)
+46
+>>> def multiply_by_3(data):
+...     return data*3
+...
+>>> do_this_and_print(multiply_by_3, 125)
+375
+>>> # Lambda
+>>> do_this_and_print(lambda data:data*3, 125)
+375
+>>> do_this_and_print(lambda data:data*5, 125)
+625
+>>> do_this_and_print(lambda data:data*data, 125)
+15625
+>>> do_this_and_print(lambda data:data ** 2, 125)
+15625
+>>> do_this_and_print(lambda data:data ** 3, 125)
+1953125
+>>> do_this_and_print(lambda data:len(data), "Test")
+4
+>>>
+
+
+

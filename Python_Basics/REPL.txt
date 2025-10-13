@@ -1,0 +1,746 @@
+========================================================================
+// Java Shell (JShell)
+
+C:\Users\Frank>jshell
+|  Welcome to JShell -- Version 24.0.2
+|  For an introduction type: /help intro
+
+jshell> /exit
+|  Goodbye
+--------------------------------------------------------------------------
+C:\Users\Frank>jshell
+|  Welcome to JShell -- Version 24.0.2
+|  For an introduction type: /help intro
+
+jshell> /ex
+|  Goodbye
+--------------------------------------------------------------------------
+Keyboard Shortcut: 
+Ctrl + D - exit
+Ctrl + L  - Clear the Screen
+========================================================================
+
+
+# Python Interactive Shell (REPL) - Read-Evaluate-Print-Loop
+
+C:\Users\Frank>python
+Python 3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> exit
+--------------------------------------------------------------------------
+C:\Users\Frank>python
+Python 3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> quit()
+--------------------------------------------------------------------------
+Keyboard Shortcuts: 
+Ctrl + Z, Enter - (End-Of-File)
+Ctrl + L  - Clear the Screen
+========================================================================
+
+🧾 Summary:
+Tool	                Language	                    Purpose
+JShell	                Java	                      Run Java snippets interactively
+Python Shell / REPL	    Python	                    Run Python code line-by-line
+IPython                 Python (advanced REPL)	    Interactive shell with rich features
+========================================================================
+
+
+# Data Types in Python
+
+>>> 34566
+34566
+>>> type(34566)
+<class 'int'>
+>>> type(45.6)
+<class 'float'>
+>>> type(True)
+
+<class 'bool'>
+>>> type(False)
+<class 'bool'>
+>>> type("Frank")
+
+<class 'str'>
+>>> type('Alan')
+<class 'str'>
+>>> type('A')
+<class 'str'>
+>>>
+>>> type("A")
+<class 'str'>
+--------------------------------------------------------------------------
+
+
+# Python is a dynamically typed structured programming Language
+
+>>> a = 1
+>>> len(1)
+Traceback (most recent call last):
+  File "<python-input-12>", line 1, in <module>
+    len(1)
+    ~~~^^^
+TypeError: object of type 'int' has no len()
+>>> type(a)
+<class 'int'>
+>>> str =  "Value"
+>>> str.upper()
+'VALUE'
+>>> a.upper()
+Traceback (most recent call last):
+  File "<python-input-16>", line 1, in <module>
+    a.upper()
+    ^^^^^^^
+AttributeError: 'int' object has no attribute 'upper'
+
+>>> type(1)
+<class 'int'>
+>>> type(1.5)
+<class 'float'>
+>>> type("1.5")
+<class 'str'>
+>>> type(True)
+<class 'bool'>
+>>> type(str)
+<class 'str'>
+>>> str = 1
+>>> type(str)
+<class 'int'>
+>>> str = True
+>>> type(str)
+<class 'bool'>
+>>> str = [1,2,3]
+>>> type(str)
+<class 'list'>
+
+========================================================================
+# Operators
+
+>>> num1 = 10
+>>> num2 = 20
+>>> type(num1)
+<class 'int'>
+>>> type(num2)
+<class 'int'>
+>>> num1 + num2
+30
+>>> num1 - num2
+-10
+>>> num1 * num2
+200
+>>> num1 / num2
+0.5
+>>> type(num1/num2)
+<class 'float'>
+>>> num1 = 20
+>>> type(num1/num2)
+<class 'float'>
+>>> num1 / num2
+1.0
+>>> num1 = 30
+>>> num1 / num2
+1.5
+>>> num1 // num2
+1
+>>> num1 = 7
+>>> num2 = 3
+>>> num1 % num2
+1
+>>> 10 ** 3
+1000
+>>> 5 ** 3
+125
+>>> pow(5, 3)
+125
+
+>>> num1++
+  File "<python-input-48>", line 1
+    num1++
+          ^
+SyntaxError: invalid syntax
+>>> num--
+  File "<python-input-49>", line 1
+    num--
+         ^
+SyntaxError: invalid syntax
+>>> ++num1
+30
+>>> --num2
+20
+>>> num1 += 1
+>>> num1
+31
+>>> num1 = num1 + 1
+>>> num1
+32
+
+>>> max(2,4,3)
+4
+>>> min(2,4,3)
+2
+>>> round(5.6)
+6
+>>> round(5.65645, 3)
+5.656
+>>> round(5.65663, 3)
+5.657
+
+>>> float(3)
+3.0
+>>> int(3.14)
+3
+
+========================================================================
+# Boolean
+
+>>> True
+True
+>>> False
+False
+>>> is_done = True
+>>> i = 3.14
+>>> i > 2
+True
+>>> True and False
+False
+>>> True or False
+True
+>>> not True
+False
+>>> True ^ True
+False
+>>> False ^ False
+False
+>>> True ^ False
+True
+>>> False ^ True
+True
+
+
+>>> i = 5
+>>> i > 5
+False
+>>> i >= 5
+True
+>>> i <= 5
+True
+>>> i == 5
+True
+>>> i != 5
+False
+>>>
+
+========================================================================
+# string 
+
+>>> msg = "Hello World"
+>>> msg = 'Hello World'
+>>> msg = 'Hello World"
+  File "<python-input-26>", line 1
+    msg = 'Hello World"
+          ^
+SyntaxError: unterminated string literal (detected at line 1)
+>>> msg = "Hello World"
+>>> type(msg)
+<class 'str'>
+>>> msg.upper()
+'HELLO WORLD'
+>>> msg.lower()
+'hello world'
+>>> msg = "hello"
+>>> msg.capitalize()
+'Hello'
+>>> "hello".capitalize()
+'Hello'
+>>> 'hello'.capitalize()
+'Hello'
+>>> 'hello'.istitle()
+False
+>>> 'Hello'.istitle()
+True
+>>> 'hello'.islower()
+True
+>>> 'Hello'.islower()
+False
+>>> 'hello'.isupper()
+False
+>>> 'HELLO'.isupper()
+True
+>>> '123'.isdigit()
+True
+>>> 'A23'.isdigit()
+False
+>>> '2 3'.isdigit()
+False
+>>> '23'.isdigit()
+True
+>>> '23'.isalpha()
+False
+>>> '2A'.isalpha()
+False
+>>> 'ABC'.isalpha()
+True
+>>> 'ABC123'.isalnum()
+True
+>>> 'ABC 123'.isalnum()
+False
+>>> 'Hello World'.endswith('World')
+True
+>>> 'Hello World'.endswith('rld')
+True
+>>> 'Hello World'.endswith('d')
+True
+>>> 'Hello World'.endswith('e')
+False
+>>> 'Hello World'.startswith('Hello')
+True
+>>> 'Hello World'.startswith('H')
+True
+>>> 'Hello World'.startswith('W')
+False
+>>> 'Hello World'.find('Hello')
+0
+>>> 'Hello World'.find('ello')
+1
+>>> 'Hello World'.find('llo')
+2
+>>> 'Hello World'.find('Ello')
+-1
+>>> 'Hello World'.find('bello')
+-1
+>>> 'Hello World'.find('W')
+6
+>>> 'Hello World'.find('World')
+6
+
+========================================================================
+
+# Data type conversions
+
+>>> str(True)
+'True'
+>>> bool('True')
+True
+>>> boole('true'))
+  File "<python-input-66>", line 1
+    boole('true'))
+                 ^
+SyntaxError: unmatched ')'
+>>> boole('true')
+Traceback (most recent call last):
+  File "<python-input-67>", line 1, in <module>
+    boole('true')
+    ^^^^^
+NameError: name 'boole' is not defined. Did you mean: 'bool'?
+>>> bool('true')
+True
+>>> bool('tru')
+True
+>>> bool('tr')
+True
+>>> bool('False')
+True
+>>> bool('false')
+True
+>>> bool('fal')
+True
+>>> bool('')
+False
+>>> str(123)
+'123'
+>>> str(123ABC)
+  File "<python-input-76>", line 1
+    str(123ABC)
+          ^
+SyntaxError: invalid decimal literal
+>>> str(1235.67890)
+'1235.6789'
+>>> int('45')
+45
+>>> int('45.56')
+Traceback (most recent call last):
+  File "<python-input-79>", line 1, in <module>
+    int('45.56')
+    ~~~^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '45.56'
+>>> int('45asdf')
+Traceback (most recent call last):
+  File "<python-input-80>", line 1, in <module>
+    int('45asdf')
+    ~~~^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '45asdf'
+>>> # HexDecimal
+>>> int('45abc', 16)
+285372
+>>> int('a', 16)
+10
+>>> int('b', 16)
+11
+>>> int('c', 16)
+12
+>>> int('d', 16)
+13
+>>> int('e', 16)
+14
+>>> int('f', 16)
+15
+>>> in('g', 16)
+  File "<python-input-90>", line 1
+    in('g', 16)
+    ^^
+SyntaxError: invalid syntax
+>>> float("3.14")
+3.14
+>>> float("3.14abc")
+Traceback (most recent call last):
+  File "<python-input-92>", line 1, in <module>
+    float("3.14abc")
+    ~~~~~^^^^^^^^^^^
+ValueError: could not convert string to float: '3.14abc'
+>>>
+
+========================================================================
+
+# In Python Data types are Immutable (str, int, float, bool)
+
+# Example String variable & object relation:
+
+Variables                       objects
+Name            Location        Location    Object content
+message         D               A           Hello
+message_upper   B               B           HELLO
+                                C           ABC
+                                D           abc      
+
+''' Object content of String Object can't be modified ''''
+
+>>> message = "Hello"
+>>> message.upper()
+'HELLO'
+>>> message
+'Hello'
+>>> message_upper = message.upper()
+>>> message = "ABC"
+>>> message
+'ABC'
+>>> message = message.lower()
+>>> message
+'abc'
+>>>
+
+========================================================================
+
+# Character is string (str) in python
+
+>>> message = "Hello World"
+>>> message[0]
+'H'
+>>> type(message[0])
+<class 'str'>
+>>> type(message)
+<class 'str'>
+>>>
+
+========================================================================
+# String modules
+
+>>> import string
+>>> string.
+string.Formatter()      string.ascii_lowercase  string.digits           string.printable
+string.Template(        string.ascii_uppercase  string.hexdigits        string.punctuation
+string.ascii_letters    string.capwords(        string.octdigits        string.whitespace
+
+>>> # Enter "string." and then press "tab"
+>>> string.ascii_letters                                                                                                 >>> string.T>>> string.ascii_letters
+'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+>>> string.ascii_uppercase                                                                                               >>> string.a>>> string.ascii_uppercase
+'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+>>> string.digits
+'0123456789'
+>>> string.hexdigits
+'0123456789abcdefABCDEF'
+>>> string.punctuation
+'!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
+
+>>> 'a' in string.ascii_letters
+True
+>>> 'ab' in string.ascii_letters
+True
+>>> 'abc' in  string.ascii_letters
+True
+>>> '1' in '13579'
+True
+>>> '2' in '13579'
+False
+>>> '4' in '13579'
+False
+>>>
+
+========================================================================
+
+# Basic Programs with string
+
+>>> vowel_string = 'aeiou'
+>>> char = 'b'
+>>> char in vowel_string
+False
+>>> vowel_string = 'AEIOU'
+>>> char.upper() in vowel_string
+False
+>>> char = 'a'
+>>> char.upper() in vowel_string
+True
+>>> vowel_string = 'aeiou'
+>>> char.lower() in vowel_string
+True
+>>> char = 'A'
+>>> char.lower() in vowel_string
+True
+>>> vowel_string = 'aeiouAEIOU'
+>>> char = 'b'
+>>> char in vowel_string
+False
+>>> char = 'a'
+>>> char in vowel_string
+True
+
+========================================================================
+
+>>> for char in string.ascii_uppercase:
+...     print(char)
+...
+A
+B
+C
+D
+E
+F
+G
+H
+I
+J
+K
+L
+M
+N
+O
+P
+Q
+R
+S
+T
+U
+V
+W
+X
+Y
+Z
+>>> for char in string.ascii_lowercase:
+...     print(char)
+...
+a
+b
+c
+d
+e
+f
+g
+h
+i
+j
+k
+l
+m
+n
+o
+p
+q
+r
+s
+t
+u
+v
+w
+x
+y
+z
+
+>>> vowel_string = 'aeiouAEIOU'
+>>> is_a_consonant = 'b'
+>>> is_a_consonant not in vowel_string
+True
+>>> is_a_consonant = 'a'
+>>> is_a_consonant not in vowel_string
+False
+>>> vowel_string = 'aeiou'
+>>> char.lower() in vowel_string
+False
+>>> 'b'.lower() in vowel_string
+False
+>>> 'a'.lower() in vowel_string
+True
+>>> 'a'.lower() not in vowel_string
+False
+>>> 'b'.lower() not in vowel_string
+True
+>>> '1'.isalpha() and '1'.lower() not in vowel_string
+False
+>>> char.isalpha() and char.lower() not in vowel_string
+True
+>>> char
+'z'
+>>> char = '2'
+>>> char.isalpha() and char.lower() not in vowel_string
+False
+>>> char = 'a'
+>>> char.isalpha() and char.lower() not in vowel_string
+False
+>>> char = 'b'
+>>> char.isalpha() and char.lower() not in vowel_string
+True
+>>>
+
+
+>>> import string
+>>> string_example = "This is a great thing"
+>>> string_example.
+string_example.capitalize()    string_example.isidentifier()  string_example.rfind(
+string_example.casefold()      string_example.islower()       string_example.rindex(
+string_example.center(         string_example.isnumeric()     string_example.rjust(
+string_example.count(          string_example.isprintable()   string_example.rpartition(
+string_example.encode(         string_example.isspace()       string_example.rsplit(
+string_example.endswith(       string_example.istitle()       string_example.rstrip(
+string_example.expandtabs(     string_example.isupper()       string_example.split(
+string_example.find(           string_example.join(           string_example.splitlines(
+string_example.format(         string_example.ljust(          string_example.startswith(
+string_example.format_map(     string_example.lower()         string_example.strip(
+string_example.index(          string_example.lstrip(         string_example.swapcase()
+string_example.isalnum()       string_example.maketrans(      string_example.title()
+string_example.isalpha()       string_example.partition(      string_example.translate(
+string_example.isascii()       string_example.removeprefix(   string_example.upper()
+string_example.isdecimal()     string_example.removesuffix(   string_example.zfill(
+string_example.isdigit()       string_example.replace(
+>>> # Enter "string_example." and then press "tab"
+
+>>> string_example.split()
+['This', 'is', 'a', 'great', 'thing']
+>>> for char in string_example.split():
+...     print(char)
+...
+This
+is
+a
+great
+thing
+>>> string_example = "This\nis\na\ngreat\nthing"
+>>> print(string_example)
+This
+is
+a
+great
+thing
+>>> string_example.splitlines()
+['This', 'is', 'a', 'great', 'thing']
+>>> 1 + 2
+3
+>>> "1" + "2"
+'12'
+>>> "1" + 1
+Traceback (most recent call last):
+  File "<python-input-89>", line 1, in <module>
+    "1" + 1
+    ~~~~^~~
+TypeError: can only concatenate str (not "int") to str
+>>> "ABC" + "DEF"
+'ABCDEF'
+>>> 1 * 20
+20
+>>> '1' * 20
+'11111111111111111111'
+>>> 'A' * 20
+'AAAAAAAAAAAAAAAAAAAA'
+>>> str = "Frank"
+>>> str1 = "Frank"
+>>> str2 = "Franco"
+>>> str == str1
+True
+>>> str == str2
+False
+========================================================================
+# Truthy & Falsy evaluation
+
+In Python, using non-boolean values (like integers, strings, lists) in 
+conditions is called truthy and falsy evaluation.
+
+Truthy: Values that evaluate to True in a boolean context 
+(e.g., non-zero numbers, non-empty strings/lists).
+
+Falsy: Values that evaluate to False (e.g., 0, None, "", [], {}).
+
+For example:
+if [1, 2]:  # This runs because the list is truthy
+    print("List is truthy")
+
+>>> i = 45
+>>> if i : print("Something")
+...
+Something
+>>> bool(45)
+True
+>>> bool(-45)
+True
+>>> bool(1)
+True
+>>> bool(-1)
+True
+>>> bool(0)
+False
+>>> bool(0.0)
+False
+>>> str = "Test"
+>>> bool(str)
+True
+>>> bool("")
+False
+>>> bool('')
+False
+
+
+>>> # In Java, only boolean conditions are used within conditional statements.
+Explanation:
+The condition inside an if statement must evaluate to a boolean value (true or false).
+You cannot use integers or other types directly as conditions (unlike in C/C++).
+Example:
+if (x > 5) { ... } // Valid: x > 5 is a boolean expression
+
+if (x) { ... } // Invalid in Java if x is an int
+
+========================================================================
+
+
+>>> for ch in 'Hello World':
+...     print(ch)
+...
+H
+e
+l
+l
+o
+
+W
+o
+r
+l
+d
+>>> for word in "Hello World".split():
+...     print(word)
+...
+Hello
+World
+>>> for item in (3, 8, 9):
+...     print(item)
+...
+3
+8
+9
+
