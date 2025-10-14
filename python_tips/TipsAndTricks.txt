@@ -1,0 +1,37 @@
+
+
+C:\Users\Frank>python
+Python 3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> numbers = [1, 4, 8, 12, 16, 20]
+>>> for number in numbers:
+...     print(number)
+...
+1
+4
+8
+12
+16
+20
+>>> for index,number in enumerate(numbers):
+...     print(f'{index} - {number}')
+...
+0 - 1
+1 - 4
+2 - 8
+3 - 12
+4 - 16
+5 - 20
+
+>>> values = list('aeiou')
+>>> values
+['a', 'e', 'i', 'o', 'u']
+>>> for index, vowel in enumerate(values):
+...     print(f'{index} - {vowel}')
+...
+0 - a
+1 - e
+2 - i
+3 - o
+4 - u
+>>>
