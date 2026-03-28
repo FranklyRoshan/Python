@@ -1,0 +1,83 @@
+# ===============================================================
+# OOPs Concepts
+# ===============================================================
+
+In Object-Oriented Programming (OOP), terms like object.method and object.attribute belong to a broader set of
+concepts used to organize and protect code. [1, 2, 3]
+The Four Pillars of OOP
+These are the foundational principles that define how OOP systems should be designed:
+
+* Encapsulation: Bundling data (attributes) and methods that act on that data into a single unit (a class).
+It often involves data hiding, where internal details are kept private to protect them from outside misuse.
+
+* Inheritance: A mechanism where a new "child" class (subclass) derives characteristics and behaviors from an
+existing "parent" class (superclass). This promotes code reusability.
+
+* Polymorphism: The ability of different objects to respond to the same command (method name) in their own way.
+For example, a Dog and a Cat might both have a speak() method, but one barks while the other meows.
+
+* Abstraction: Hiding complex implementation details and showing only the essential features of an object.
+This allows users to interact with a simple interface without needing to understand the "under the hood" mechanics.
+[4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+
+====================================================================================================================
+
+Core Structural Terms
+
+* Class: A blueprint or template used to create objects.
+* Instance / Object: A specific, concrete example created from a class.
+* Instantiation: The actual process of creating an instance from a class.
+* Constructor: A special method (like init in Python) that runs automatically to initialize a new object.
+* State: The collective values of an object's attributes at any given time.
+* Behavior: The actions or operations an object can perform, defined by its methods. [4, 5, 9, 10, 14, 15, 16]
+
+====================================================================================================================
+
+Relationship Terms
+
+* Association: A general relationship between two unrelated classes.
+* Aggregation: A "HAS-A" relationship where one object is made up of others, but they can exist independently
+(e.g., a Library has Books).
+* Composition: A stricter "PART-OF" relationship where the parts cannot exist without the whole
+(e.g., a Human has a Heart).
+
+====================================================================================================================
+
+Key Components of the Process
+
+* Instantiation: This is the act of creating a unique "instance" (an object) from a class blueprint. In your example,
+Turtle is the class (the blueprint), and tim is the specific instance (the individual turtle).
+* Initialization: Immediately after the object is created, Python automatically runs the init() method to set the
+object's starting state, such as its initial position and color.
+* Constructor: The call Turtle() acts as a constructor, which is a special function that handles both the creation and
+setup of the new object. [1, 2, 3, 4, 5]
+
+Code  Role
+Turtle  - The Class (the template for all turtles).
+Turtle()  - The Constructor call that triggers instantiation.
+timmy - The Instance or Object (the specific entity you can control).
+
+====================================================================================================================
+
+In the world of Object-Oriented Programming (OOP), these represent the two ways you interact with an object:
+1. object.method() (The Action)
+A method is a function that belongs to an object. It represents what the object can do.
+
+* Syntax: Always followed by parentheses (), even if empty.
+* Example: tim.forward(100) or tim.right(90).
+* Purpose: To perform an operation or change the state of the object.
+
+2. object.attribute (The Data)
+An attribute is a variable that belongs to an object. It represents what the object is (its characteristics).
+
+* Syntax: No parentheses.
+* Example: tim.color or tim.pensize.
+* Purpose: To store or retrieve information about the object's current state.
+
+Feature         object.method()     object.attribute
+Analogy         A Verb (Action)     A Noun (Trait)
+Notation        Uses ()             No ()
+Turtle Example  tim.pendown()       tim.heading
+Result          Triggers behavior   Accesses data
+
+====================================================================================================================
