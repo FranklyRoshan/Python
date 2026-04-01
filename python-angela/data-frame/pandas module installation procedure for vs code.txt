@@ -1,0 +1,4 @@
+Window
+1. open - cmd
+2. type - python -m pip install pandas
+3. restart the Visual Studio Code
