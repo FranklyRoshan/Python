@@ -80,7 +80,7 @@ if percent_change > 5:
 # 8. - Create a new list of the first 3 article's headline and description using list comprehension.
 
 # 9. - Send each article as a separate message via Twilio.
-client = Client(account_sid, auth_token)
+client = Client(TWILIO_ACCOUNT_SID,TWILIO_AUTH_TOKEN)
 message = client.messages.create(
     body="",
     from_=MY_TWILIO_PHONE_NUMBER,
