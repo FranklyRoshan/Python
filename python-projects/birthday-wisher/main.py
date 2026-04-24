@@ -1,4 +1,5 @@
 ##################### Extra Hard Starting Project ######################
+import os
 import pandas
 import smtplib
 import random
