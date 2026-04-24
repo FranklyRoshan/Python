@@ -10,8 +10,8 @@ from zoneinfo import ZoneInfo
 
 MY_LAT = 13.072090 # Your Latitude
 MY_LNG = 80.201859 # Your Longitude
-MY_EMAIL = os.environ.get("MY_EMAIL")
-MY_EMAIL_PASSWORD = os.environ.get("MY_EMAIL_PASSWORD")
+EMAIL_ID = os.environ.get("EMAIL_ID")
+EMAIL_ID_PASSWORD = os.environ.get("EMAIL_ID_PASSWORD")
 
 
 def is_iss_overhead():
@@ -87,10 +87,10 @@ def is_night():
 if is_iss_overhead() and is_night():
     with smtplib.SMTP("smtp.gmail.com") as connection: 
         connection.starttls()
-        connection.login(user=MY_EMAIL, password=MY_EMAIL_PASSWORD)
+        connection.login(user=EMAIL_ID, password=EMAIL_ID_PASSWORD)
         connection.sendmail(
-            from_addr=MY_EMAIL,
-            to_addrs= MY_EMAIL,
+            from_addr=EMAIL_ID,
+            to_addrs= EMAIL_ID,
             msg=f"subject: Look up👆 \n\n The ISS is above you in the sky"
         )
 

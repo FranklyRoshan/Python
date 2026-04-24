@@ -26,12 +26,12 @@ Ensure your requirements.txt includes:
 2. GitHub Secrets
 To protect sensitive information, the script uses environment variables. You must add the following Repository Secrets in GitHub (Settings > Secrets and variables > Actions):
 
-Secret Name         Description
-WEATHER_API_KEY     Your OpenWeatherMap API Key
-TWILIO_ACCOUNT_SID  Twilio Account SID
-TWILIO_AUTH_TOKEN   Twilio Auth Token
-TWILIO_PHONE_NUMBER Your assigned Twilio virtual number
-MY_PHONE_NUMBER     Your verified personal phone number
+Secret Name             Description
+WEATHER_API_KEY         Your OpenWeatherMap API Key
+TWILIO_SID              Twilio Account SID
+TWILIO_AUTH_TOKEN       Twilio Auth Token
+VIRTUAL_TWILIO_NUMBER   Your assigned Twilio virtual number
+VERIFIED_NUMBER         Your verified personal phone number
 
 3. Automation Logic
 The workflow is configured to trigger every morning:
