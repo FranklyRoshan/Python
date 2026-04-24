@@ -19,13 +19,14 @@ jobs:
           python-version: '3.13'
 
       - name: Install dependencies
-        working-directory: python-projects/rain-alert-SMS/
+        working-directory: Python/python-projects/rain-alert-SMS/
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           # pip install requests flask twilio
 
       - name: Run Python script
+        working-directory: Python/python-projects/rain-alert-SMS
         env:
             WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
             TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
