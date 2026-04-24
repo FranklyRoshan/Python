@@ -83,7 +83,7 @@ if percent_change > 5:
 client = Client(TWILIO_ACCOUNT_SID,TWILIO_AUTH_TOKEN)
 message = client.messages.create(
     body="",
-    from_=MY_TWILIO_PHONE_NUMBER,
+    from_=TWILIO_PHONE_NUMBER,
     to=MY_PHONE_NUMBER,
 )
 # print(message.body)
