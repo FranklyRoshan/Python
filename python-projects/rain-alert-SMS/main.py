@@ -18,10 +18,10 @@ COUNT = 4 # API will return "COUNT" data records, each representing a 3-hour win
 WEATHER_API_KEY = os.environ.get("WEATHER_API_KEY")
 TWILIO_SID = os.environ.get("TWILIO_SID")
 TWILIO_AUTH_TOKEN = os.environ.get("TWILIO_AUTH_TOKEN")
-TWILIO_PHONE_NUMBER = os.environ.get("TWILIO_PHONE_NUMBER")
-MY_PHONE_NUMBER = os.environ.get("MY_PHONE_NUMBER")
-# MY_EMAIL = os.environ.get("MY_EMAIL")
-# MY_EMAIL_PASSWORD = os.environ.get("MY_EMAIL_PASSWORD")
+VIRTUAL_TWILIO_NUMBER = os.environ.get("VIRTUAL_TWILIO_NUMBER")
+VERIFIED_NUMBER = os.environ.get("VERIFIED_NUMBER")
+# EMAIL_ID = os.environ.get("EMAIL_ID")
+# EMAIL_ID_PASSWORD = os.environ.get("EMAIL_ID_PASSWORD")
 
 # 2. WEATHER API CONFIG
 weather_params = {
@@ -48,8 +48,8 @@ if will_rain:
     client = Client(TWILIO_SID, TWILIO_AUTH_TOKEN)
     message = client.messages.create(
         body="It's gonna rain 🌧️ today. Remember to bring an umbrella ☔",
-        from_= TWILIO_PHONE_NUMBER,
-        to= MY_PHONE_NUMBER,
+        from_= VIRTUAL_TWILIO_NUMBER,
+        to= VERIFIED_NUMBER,
     )
     # print(message.body)
     print(message.status)
@@ -57,9 +57,9 @@ if will_rain:
     # # 6. SEND SMS VIA TWILIO MESSAGE VIA EMAIL
     # with smtplib.SMTP("smtp.gmail.com") as connection:
     #     connection.starttls()
-    #     connection.login(user=MY_EMAIL, password=MY_EMAIL_PASSWORD)
+    #     connection.login(user=EMAIL_ID, password=EMAIL_ID_PASSWORD)
     #     connection.sendmail(
-    #         from_addr=MY_EMAIL,
-    #         to_addrs=MY_EMAIL,
+    #         from_addr=EMAIL_ID,
+    #         to_addrs=EMAIL_ID,
     #         msg=f"subject: Weather Alert 🌧️ \n\n It's gonna rain 🌧️ today. Remember to bring an umbrella ☔ "
     #     )
