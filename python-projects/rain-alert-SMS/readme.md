@@ -44,8 +44,8 @@ The workflow is configured to trigger every morning:
 3. Notify: If will_rain is True, the Twilio Client is initialized, and an SMS is sent: "It's gonna rain 🌧️ today. Remember to bring an umbrella ☔"
 
 ## Resource links
-1. Twilio - https://www.twilio.com/en-us
-2. HTTP Status codes - http://httpstatuses.com/
-3. Requests (HTTP library for Python) Documentation - https://docs.python-requests.org/en/latest/
+1. Open Weather Map - https://openweathermap.org/
+2. Twilio - https://www.twilio.com/en-us
+3. HTTP Status codes - http://httpstatuses.com/
+4. Requests (HTTP library for Python) Documentation - https://docs.python-requests.org/en/latest/
 5. Latitude and longitude address tool - https://www.latlong.net/Show-Latitude-Longitude.html
-   (API - https://api.sunrise-sunset.org/json)
