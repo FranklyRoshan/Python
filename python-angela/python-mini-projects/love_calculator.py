@@ -28,7 +28,7 @@ def calculate_love_score(name1, name2):
     # print(count)
 
 
-calculate_love_score("Frank", "Angela")
+calculate_love_score("Rogith", "Angela")
 
 
 # ===============================================================

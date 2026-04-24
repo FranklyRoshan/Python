@@ -8,7 +8,7 @@ YELLOW = "#f7f5dd"
 FONT_NAME = "Courier"
 WORK_MIN = 25
 SHORT_BREAK_MIN = 5
-LONG_BREAK_MIN = 20
+LONG_BREAK_MIN = 15
 reps = 0
 timer = None
 
@@ -26,9 +26,9 @@ def start_timer():
     global reps, title_label
     reps += 1
 
-    work_sec = int(WORK_MIN * 1)
-    short_break_sec = int(SHORT_BREAK_MIN * 1)
-    long_break_sec = int(LONG_BREAK_MIN * 1)
+    work_sec = int(WORK_MIN * 60)
+    short_break_sec = int(SHORT_BREAK_MIN * 60)
+    long_break_sec = int(LONG_BREAK_MIN * 60)
 
     if reps % 8 == 0:
         title_label.config(text="Break", fg=RED)

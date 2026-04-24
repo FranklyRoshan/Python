@@ -1,0 +1,7 @@
+Amazon | abcde@gmail.com | password
+Twitter | abcde@gmail.com | password
+Facebook | abcde@gmail.com | password
+Instagram | abcde@gmail.com | Password
+Whatsapp | abcde@gmail.com | Password
+Google | abcde@gmail.com | Password
+Github | abcde@gmail.com | Password
