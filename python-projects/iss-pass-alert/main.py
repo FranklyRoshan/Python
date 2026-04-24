@@ -1,0 +1,139 @@
+# ===============================================================
+# ISS pass alert
+# ===============================================================
+import requests
+import smtplib
+import time
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
+MY_LAT = 13.072090 # Your Latitude
+MY_LNG = 80.201859 # Your Longitude
+MY_EMAIL = os.environ.get("MY_EMAIL")
+MY_EMAIL_PASSWORD = os.environ.get("MY_EMAIL_PASSWORD")
+
+
+def is_iss_overhead():
+    """Check if the ISS position is within a 5° radius of your location."""
+    # ISS API
+    iss_response = requests.get(url="http://api.open-notify.org/iss-now.json")
+    # status_code = iss_response.status_code
+    iss_response.raise_for_status()
+
+    iss_data = iss_response.json()
+    # data_iss_position = response.json()["iss_position"]
+    # data_longitude = response.json()["iss_position"]["longitude"]
+
+    # Convert String to Float data type
+    iss_latitude = float(iss_data["iss_position"]["latitude"])
+    iss_longitude = float(iss_data["iss_position"]["longitude"])
+
+    # Your Position is within ±5 degrees of the ISS position.
+    if MY_LAT-5 <= iss_latitude <= MY_LAT+5 and MY_LNG-5<= iss_longitude <= MY_LNG+5:
+        return True
+    else:
+        return False
+
+def is_night():
+    """Check if it is nighttime."""
+    # Sunset and sunrise times API
+    parameter = {
+        "lat": MY_LAT,
+        "lng": MY_LNG,
+        "formatted": 0,
+    }
+
+    response = requests.get(url="https://api.sunrise-sunset.org/json", params=parameter)
+    response.raise_for_status()
+
+    data = response.json()
+    # https://api.sunrise-sunset.org/json?lat=13.072090&lng=80.201859
+
+    # UTC to IST
+    # 1. install tzdata package using pip
+    # 2. Input ISO 8601 UTC string
+    iso_utc_sunrise = data["results"]["sunrise"]
+    # 3. Parse the string into a datetime object
+    utc_sunrise = datetime.fromisoformat(iso_utc_sunrise)
+    # 4. Convert to IST
+    ist_sunrise = utc_sunrise.astimezone(ZoneInfo("Asia/Kolkata"))
+    # 5. Convert IST to hour (Integer data type)
+    sunrise = ist_sunrise.hour
+    # print(sunrise)
+
+    # Similarly for Sunset from UTC to IST hour
+    iso_utc_sunset = data["results"]["sunset"]
+    utc_sunset = datetime.fromisoformat(iso_utc_sunset)
+    ist_sunset = utc_sunset.astimezone(ZoneInfo("Asia/Kolkata"))
+    sunset = ist_sunset.hour
+    # print(sunset)
+
+    # Realtime hour
+    hour = datetime.now().hour # Integer data type
+    # print(now)
+
+    if sunset <= hour <= sunrise:
+        return True
+    else:
+        return False
+
+# Email me to tell me to "look up"
+
+# Disabled: Prevents sending duplicate emails in GitHub Actions workflows
+# while True:
+#    time.sleep(60)
+
+if is_iss_overhead() and is_night():
+    with smtplib.SMTP("smtp.gmail.com") as connection: 
+        connection.starttls()
+        connection.login(user=MY_EMAIL, password=MY_EMAIL_PASSWORD)
+        connection.sendmail(
+            from_addr=MY_EMAIL,
+            to_addrs= MY_EMAIL,
+            msg=f"subject: Look up👆 \n\n The ISS is above you in the sky"
+        )
+
+
+# ===============================================================
+# Documentations
+# ===============================================================
+
+"""
+Resource links & documentations
+1. International Space Station Current Location - http://open-notify.org/Open-Notify-API/ISS-Location-Now/
+   (API - http://api.open-notify.org/iss-now.json)
+2. HTTP Status codes - http://httpstatuses.com/
+3. Requests (HTTP library for Python) Documentation - https://docs.python-requests.org/en/latest/
+4. Sunset and sunrise times API - https://sunrise-sunset.org/api
+5. Latitude and longitude address tool - https://www.latlong.net/Show-Latitude-Longitude.html
+   (API - https://api.sunrise-sunset.org/json)
+"""
+
+"""
+HTTP Status Code Categories
+Organized for documentation in a Python file
+
+1xx: Informational
+The request has been received, and the server is continuing the process.
+Common Example: HTTPStatus.CONTINUE (100)
+
+2xx: Success
+The action was successfully received, understood, and accepted.
+Common Examples: HTTPStatus.OK (200), HTTPStatus.CREATED (201), HTTPStatus.NO_CONTENT (204)
+
+3xx: Redirection
+Further action (e.g., a redirect) is required to complete the request.
+Common Examples: HTTPStatus.MOVED_PERMANENTLY (301), HTTPStatus.NOT_MODIFIED (304)
+
+4xx: Client Error
+The request contains bad syntax or cannot be fulfilled (client-side issue).
+Common Examples: HTTPStatus.BAD_REQUEST (400), HTTPStatus.FORBIDDEN (403), HTTPStatus.NOT_FOUND (404)
+
+5xx: Server Error
+The server failed to fulfill a valid request (server-side issue).
+Common Examples: HTTPStatus.INTERNAL_SERVER_ERROR (500), HTTPStatus.SERVICE_UNAVAILABLE (503)
+
+For programmatic use, import the enum:
+from http import HTTPStatus
+"""
+
