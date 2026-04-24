@@ -1,3 +1,8 @@
+# ===============================================================
+# Weather API
+# ===============================================================
+
+
 import requests
 # pip install flask twilio
 from twilio.rest import Client
@@ -7,10 +12,12 @@ MY_LAT = 13.082680 # Your latitude
 MY_LON = 80.270721 # Your longitude
 COUNT = 4 #
 
+OWM_Endpoint = "https://api.openweathermap.org/data/2.5/forecast"
+
 weather_params = {
     "lat": MY_LAT,
     "lon": MY_LON,
-    "appid": OWM_API_KEY,
+    "appid": WEATHER_API_KEY,
     "cnt": COUNT,
 }
 
@@ -25,7 +32,7 @@ for item in condition_code:
         will_rain = True
 
 if will_rain:
-    client = Client(account_sid, auth_token)
+    client = Client(TWIILIO_ACCOUTN_SID, TWIILIO_AUTH_TOKEN)
     message = client.messages.create(
         body="It's gonna rain 🌧️ today. Remember to bring an umbrella ☔",
         from_= TWILIO_PHONE_NUMBER,
@@ -37,7 +44,7 @@ if will_rain:
     # # Weather Alert Message via Email
     # with smtplib.SMTP("smtp.gmail.com") as connection:
     #     connection.starttls()
-    #     connection.login(user=MY_EMAIL, password=MY_PASSWORD)
+    #     connection.login(user=MY_EMAIL, password=MY_EMAIL_PASSWORD)
     #     connection.sendmail(
     #         from_addr=MY_EMAIL,
     #         to_addrs=MY_EMAIL,

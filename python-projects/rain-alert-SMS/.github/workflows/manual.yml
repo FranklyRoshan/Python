@@ -23,15 +23,9 @@ jobs:
           pip install -r requirements.txt
           # If you don't have a requirements file, use:
           # pip install requests (or whatever you need)
+          pip install requests
+          pip install flask twilio
+          import smtplib
 
       - name: Run Python script
-        env:
-          OWM_API_KEY: ${{ secrets.OWM_API_KEY }}
-          OWM_Endpoin: ${{ secrets.OWM_Endpoint}}
-          account_sid : ${{ secrets.account_sid }}
-          auth_toke: ${{ secrets.auth_token }}
-          TWILIO_PHONE_NUMBER: ${{ secrets.TWILIO_PHONE_NUMBER}}
-          MY_PHONE_NUMBER: ${{ secrets.MY_PHONE_NUMBER}}"
-          MY_EMAIL: ${{ secrets.MY_EMAIL}}
-          MY_PASSWORD: ${{ secrets.MY_PASSWORD}} 
-        run: python your_script_name.py
+        run: python main.py
