@@ -1,5 +1,5 @@
 # ===============================================================
-# Weather API
+# Weather Alert SMS
 # ===============================================================
 
 import requests
@@ -7,11 +7,11 @@ import requests
 from twilio.rest import Client
 # import smtplib
 
+# OpenWeatherMap API 
+OWM_Endpoint = "https://api.openweathermap.org/data/2.5/forecast" # 3-hour / 5-day Forecast API
 MY_LAT = 13.082680 # Your latitude
 MY_LON = 80.270721 # Your longitude
-COUNT = 4 #
-
-OWM_Endpoint = "https://api.openweathermap.org/data/2.5/forecast"
+COUNT = 4 # API will return "COUNT" data records, each representing a 3-hour window. 
 
 weather_params = {
     "lat": MY_LAT,
