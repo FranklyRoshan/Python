@@ -9,6 +9,10 @@ on:
 jobs:
   run-script:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: python-projects/rain-alert-SMS
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -21,7 +25,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests flask twilio
+          pip install -r requirements.txt
+          # pip install requests flask twilio
 
       - name: Run Python script 
         env:
@@ -32,4 +37,4 @@ jobs:
             MY_PHONE_NUMBER: ${{ secrets.MY_PHONE_NUMBER }}
             MY_EMAIL: ${{secrets.MY_EMAIL}}
             MY_EMAIL_PASSWORD: ${{secrets.MY_EMAIL_PASSWORD}}
-        run: python Python/python-projects/rain-alert-SMS/main.py
+        run: python main.py
