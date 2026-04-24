@@ -29,8 +29,8 @@ Your requirements.txt only needs:Plaintextpandas
 2. GitHub Secrets
 The script retrieves your email credentials safely from GitHub's encrypted secrets. Add these in Settings > Secrets and variables > Actions:
 Secret              NameDescription
-MY_EMAIL            Your Gmail address
-MY_EMAIL_PASSWORD   Your Gmail App Password (not your regular password)
+EMAIL_ID            Your Gmail address
+EMAIL_ID_PASSWORD   Your Gmail App Password (not your regular password)
 3. CSV Format
 Ensure your birthdays.csv follows this header format:
     Code snippet

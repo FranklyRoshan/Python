@@ -29,6 +29,6 @@ jobs:
 
       - name: Run Python script 
         env:
-            MY_EMAIL: ${{secrets.MY_EMAIL}}
-            MY_EMAIL_PASSWORD: ${{secrets.MY_EMAIL_PASSWORD}}
+            EMAIL_ID: ${{secrets.EMAIL_ID}}
+            EMAIL_ID_PASSWORD: ${{secrets.EMAIL_ID_PASSWORD}}
         run: python main.py

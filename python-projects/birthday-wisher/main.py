@@ -6,8 +6,8 @@ import random
 # import datetime as dt
 from datetime import datetime
 
-MY_EMAIL = os.environ.get("MY_EMAIL")
-MY_EMAIL_PASSWORD = os.environ.get("MY_EMAIL_PASSWORD")
+EMAIL_ID  = os.environ.get("EMAIL_ID")
+EMAIL_ID_PASSWORD = os.environ.get("EMAIL_ID_PASSWORD")
 
 
 # today = (dt.datetime.today().day, dt.datetime.today().month)
@@ -32,9 +32,9 @@ if today_tuple in birthdays_dict:
 # 4. Send the letter generated in step 3 to that person's email address.
     with smtplib.SMTP("smtp.gmail.com") as connection:
         connection.starttls()
-        connection.login(user=MY_EMAIL, password=MY_EMAIL_PASSWORD)
+        connection.login(user=EMAIL_ID, password=EMAIL_ID_PASSWORD)
         connection.sendmail(
-            from_addr=MY_EMAIL, to_addrs= birthdays_person["email"],
+            from_addr=EMAIL_ID, to_addrs= birthdays_person["email"],
             msg=f"subject: Happy Birthday {birthdays_person["name"]}!\n\n{contents}"
         )
 
