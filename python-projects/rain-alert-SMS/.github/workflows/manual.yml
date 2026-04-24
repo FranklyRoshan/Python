@@ -1,4 +1,4 @@
-name: Daily Python Script
+name: Rain Alert SMS Daily Python Script
 
 on:
   schedule:
