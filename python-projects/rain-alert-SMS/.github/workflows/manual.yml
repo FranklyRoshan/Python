@@ -1,4 +1,4 @@
-name: Rain Alert Daily Python Script
+name: Daily Python Script
 
 on:
   schedule:
