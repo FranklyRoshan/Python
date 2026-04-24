@@ -55,9 +55,8 @@ else:
 # percent_change = (difference/yesterday_close) * 100
 diff_percent = round((difference / float(yesterday_close)) * 100)
 
-
 # 5. - If TODO4 percentage is greater than 5 then print("Get News").
-if abs(diff_percent) > 5:
+if abs(diff_percent) > 1:
     # print("Get News")
     
     ## STEP 2: https://newsapi.org/
