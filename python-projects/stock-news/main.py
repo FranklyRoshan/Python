@@ -76,7 +76,7 @@ if abs(diff_percent) > 1:
     news_data = response.json()
 
     # 7. - Use Python slice operator to create a list that contains the first 3 articles. Hint: https://stackoverflow.com/questions/509211/understanding-slice-notation
-    news_list = news_data["articles"][:3]
+    three_articles = news_data["articles"][:3]
 
     # 8. - Create a new list of the first 3 article's headline and description using list comprehension.
     formatted_articles = [f"{STOCK_NAME}: {up_down}{diff_percent}%\nHeadline: {article['title']}. \nBrief: {article['description']}" for article in three_articles]
