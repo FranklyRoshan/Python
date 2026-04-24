@@ -2,6 +2,7 @@
 # Weather Alert SMS
 # ===============================================================
 
+import os
 import requests
 # pip install flask twilio
 from twilio.rest import Client
