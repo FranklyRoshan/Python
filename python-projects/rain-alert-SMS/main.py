@@ -16,8 +16,8 @@ COUNT = 4 # API will return "COUNT" data records, each representing a 3-hour win
 
 # 1. RETRIEVE SECRETS FROM GITHUB ENVIRONMENT
 WEATHER_API_KEY = os.environ.get("WEATHER_API_KEY")
-TWIILIO_ACCOUTN_SID = os.environ.get("TWIILIO_ACCOUTN_SID")
-TWIILIO_AUTH_TOKEN = os.environ.get("TWIILIO_AUTH_TOKEN")
+TWILIO_ACCOUNT_SID = os.environ.get("TWILIO_ACCOUNT_SID")
+TWILIO_AUTH_TOKEN = os.environ.get("TWILIO_AUTH_TOKEN")
 TWILIO_PHONE_NUMBER = os.environ.get("TWILIO_PHONE_NUMBER")
 MY_PHONE_NUMBER = os.environ.get("MY_PHONE_NUMBER")
 # MY_EMAIL = os.environ.get("MY_EMAIL")
@@ -45,7 +45,7 @@ for item in condition_code:
 
 # 5. SEND SMS VIA TWILIO
 if will_rain:
-    client = Client(TWIILIO_ACCOUTN_SID, TWIILIO_AUTH_TOKEN)
+    client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
     message = client.messages.create(
         body="It's gonna rain 🌧️ today. Remember to bring an umbrella ☔",
         from_= TWILIO_PHONE_NUMBER,
