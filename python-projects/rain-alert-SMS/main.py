@@ -13,6 +13,16 @@ MY_LAT = 13.082680 # Your latitude
 MY_LON = 80.270721 # Your longitude
 COUNT = 4 # API will return "COUNT" data records, each representing a 3-hour window. 
 
+# Mappint local variables to environment secrets
+WEATHER_API_KEY = os.environ.get("WEATHER_API_KEY")
+TWIILIO_ACCOUTN_SID = os.environ.get("TWIILIO_ACCOUTN_SID")
+TWIILIO_AUTH_TOKEN = os.environ.get("TWIILIO_AUTH_TOKEN")
+TWILIO_PHONE_NUMBER = os.environ.get("TWILIO_PHONE_NUMBER")
+MY_PHONE_NUMBER = os.environ.get("MY_PHONE_NUMBER")
+# MY_EMAIL = os.environ.get("MY_EMAIL")
+# MY_EMAIL_PASSWORD = os.environ.get("MY_EMAIL_PASSWORD")
+
+
 weather_params = {
     "lat": MY_LAT,
     "lon": MY_LON,
