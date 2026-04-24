@@ -2,7 +2,6 @@
 # Weather API
 # ===============================================================
 
-
 import requests
 # pip install flask twilio
 from twilio.rest import Client
