@@ -16,7 +16,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.13'
 
       - name: Install dependencies
         run: |
@@ -33,4 +33,4 @@ jobs:
             MY_PHONE_NUMBER: ${{ secrets.MY_PHONE_NUMBER }}
             MY_EMAIL: ${{secrets.MY_EMAIL}}
             MY_EMAIL_PASSWORD: ${{secrets.MY_EMAIL_PASSWORD}}
-        run: python python-projects/rain-alert-SMS/main.py
+        run: python ./Python/python-projects/rain-alert-SMS/main.py
