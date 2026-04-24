@@ -1,4 +1,4 @@
-name: Daily Python Script
+name: Rain Alert Daily Python Script
 
 on:
   schedule:
@@ -27,4 +27,4 @@ jobs:
           pip install requests flask twilio
 
       - name: Run Python script
-        run: python main.py
+        run: python Python/python-projects/rain-alert-SMS/main.py
