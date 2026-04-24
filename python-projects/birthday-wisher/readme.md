@@ -48,3 +48,4 @@ Ensure your birthdays.csv follows this header format:
 A quick tip for your code:
 1. In your main.py, you used an f-string inside another f-string for the email subject:msg=f"subject: Happy Birthday {birthdays_person["name"]}!\n\n{contents}"
 2. Be careful: Using double quotes " inside double quotes will cause a syntax error. Change the inner ones to single quotes like this:{birthdays_person['name']}
+
