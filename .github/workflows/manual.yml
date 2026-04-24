@@ -24,6 +24,7 @@ jobs:
           pip install requests flask twilio
 
       - name: Run Python script
+        working-directory: Python/python-projects/rain-alert-SMS/
         env:
             WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
             TWIILIO_ACCOUTN_SID: ${{ secrets.TWIILIO_ACCOUTN_SID }}
@@ -32,4 +33,4 @@ jobs:
             MY_PHONE_NUMBER: ${{ secrets.MY_PHONE_NUMBER }}
             MY_EMAIL: ${{secrets.MY_EMAIL}}
             MY_EMAIL_PASSWORD: ${{secrets.MY_EMAIL_PASSWORD}}
-        run: python Python/python-projects/rain-alert-SMS/main.py
+        run: python main.py
