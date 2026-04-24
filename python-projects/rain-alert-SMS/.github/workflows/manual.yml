@@ -19,9 +19,10 @@ jobs:
           python-version: '3.10'
 
       - name: Install dependencies
-        working-directory: .github/workflows
         run: |
-          pip install -r requirements.txt
+          python -m pip install --upgrade pip
+          # Use the full path directly
+          pip install -r .github/workflows/requirements.txt
           # If you don't have a requirements file, use:
           # pip install requests (or whatever you need)
 
