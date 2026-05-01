@@ -1,0 +1,49 @@
+name: Flight Deals Manual Workflow Python Script
+
+on:
+  workflow_dispatch: # Allows manual triggering only
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    environment: Flight Deals Env # This line is required to access the environment's secrets
+    defaults:
+      run:
+        working-directory: python-projects/flight-deals 
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Python script 
+        env:
+          # Accessing a regular environment variable
+          # API_URL: ${{ vars.API_URL }}
+          SHEETY_PRICES_ENDPOINT: ${{ vars.SHEETY_PRICES_ENDPOINT }}
+          SHEETY_USERS_ENDPOINT: ${{ vars.SHEETY_USERS_ENDPOINT }}
+
+          # Accessing an environment secret
+          # API_KEY: ${{ secrets.API_KEY }}
+          EMAIL_PROVIDER_SMTP_ADDRESS: ${{ secrets.EMAIL_PROVIDER_SMTP_ADDRESS }}
+          MY_EMAIL: ${{ secrets.MY_EMAIL }}
+          MY_EMAIL_PASSWORD: ${{ secrets.MY_EMAIL_PASSWORD }}
+          SERPAPI_API_KEY: ${{ secrets.SERPAPI_API_KEY }}
+          SHEETY_PASSWORD: ${{ secrets.SHEETY_PASSWORD }}
+          SHEETY_USERNAME: ${{ secrets.SHEETY_USERNAME }}
+          TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
+          TWILIO_SID: ${{ secrets.TWILIO_SID }}
+          TWILIO_VERIFIED_NUMBER: ${{ secrets.TWILIO_VERIFIED_NUMBER }}
+          TWILIO_VIRTUAL_NUMBER: ${{ secrets.APTWILIO_VIRTUAL_NUMBERI }}
+          TWILIO_WHATSAPP_NUMBER: ${{ secrets.TWILIO_WHATSAPP_NUMBER }}
+  
+        run: python main.py
