@@ -1,0 +1,17 @@
+# ==================== Resource links ====================
+
+API
+SerpApi - https://serpapi.com/dashboard
+Sheety - https://sheety.co/
+Twilio - https://www.twilio.com/
+
+Google
+Google Drive - https://drive.google.com/
+Google Sheets - https://docs.google.com/spreadsheets
+Google Forms - https://docs.google.com/forms
+
+Resources
+Wikipedia IATA Airport Code -
+https://en.wikipedia.org/wiki/IATA_airport_code#Cities_with_multiple_airports
+Stack Overflow .env file setup Guide -
+https://stackoverflow.com/questions/40216311/reading-in-environment-variables-from-an-environment-file

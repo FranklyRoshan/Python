@@ -1,0 +1,59 @@
+import os
+from datetime import datetime
+
+import requests
+from dotenv import load_dotenv
+
+# Local environment variables from .env file
+load_dotenv()
+
+SERPAPI_ENDPOINT = "https://serpapi.com/search"
+
+class FlightSearch:
+
+    def __init__(self):
+        self._api_key = os.environ["SERPAPI_API_KEY"]
+
+    def check_flight(self, origin_city_code, destination_city_code, from_time: datetime, to_time: datetime, is_direct=True):
+        """
+         Searches for flight options between two cities on specified dates
+         using the SerpAPI Google Flights engine.
+
+         Parameters:
+             origin_city_code (str): The IATA code of the departure city.
+             destination_city_code (str): The IATA code of the destination city.
+             from_time (datetime): The departure date.
+             to_time (datetime): The return date.
+             is_direct (bool): True for non-stop flights only. Default is True.
+
+         Returns:
+             dict or None: A dictionary containing flight data if successful; None if there is an error.
+         """
+        query = {
+            "engine": "google_flights",
+            "departure_id": origin_city_code,
+            "arrival_id": destination_city_code,
+            "outbound_date": from_time.strftime("%Y-$m-%d"),
+            "return_date": to_time.strftime("%Y-%m-%d"),
+            "type": "1",
+            "adults": "1",
+            "currency": "GBP",
+            "api_key": self._api_key,
+        }
+
+        # Only include stops parameters if is_direct is True
+        if is_direct:
+            query["stop"] = "1"
+
+        response = requests.get(url=SERPAPI_ENDPOINT, params=query)
+
+        if  response.status_code != 200:
+            print(f"check_flight() response code: {response.status_code}")
+            return None
+
+        data =  response.json()
+        if "error" in data:
+            print(f"API error: {data['error']}")
+            return None
+        return data
+
