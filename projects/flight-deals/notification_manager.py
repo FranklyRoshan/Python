@@ -17,7 +17,7 @@ class NotificationManager:
         self.whatsapp_number = os.environ["TWILIO_WHATSAPP_NUMBER"]
         # Set up Twilio Client and SMTP connection
         self.client = Client(os.environ['TWILIO_SID'], os.environ["TWILIO_AUTH_TOKEN"])
-        self.connection = smtplib.SMTP(os.environ["EMAIL_PROVIDER_SMTP_ADDRESS"])
+        self.connection = smtplib.SMTP(os.environ["EMAIL_PROVIDER_SMTP_ADDRESS"], 465)
         
     def send_sms(self, message_body):
         message = self.client.messages.create(
@@ -47,5 +47,5 @@ class NotificationManager:
                 self.connection.sendmail(
                     from_addr=self.email,
                     to_addrs=email,
-                    msg=f"Subject:New Low Price Flight!\n\n{email_body}".encode('utf-8')
+                    msg=f"Subject: New Low Price Flight!\n\n{email_body}".encode('utf-8')
                 )

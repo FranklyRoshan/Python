@@ -10,7 +10,7 @@ class FlightData:
 
 def find_cheapest_flight(data, return_date):
     # Handel empty data if no flight data is returned
-    if data is None or (not data.get("best_flights") and not data.get("other_flight")):
+    if data is None or (not data.get("best_flight") and not data.get("other_flight")):
         print("No flight data")
         return FlightData("N/A", "N/A","N/A", "N/A", "N/A", "N/A")
 
@@ -21,8 +21,8 @@ def find_cheapest_flight(data, return_date):
     first_flight = all_flights[0]
     lowest_price = first_flight["price"]
     origin = first_flight["flights"][0]["departure_airport"]["id"]
-    destination = first_flight["flight"][-1]["arrival_airport"]["id"]
-    out_date = first_flight["flight"][0]["departure_airport"]["time"].split("")[0]
+    destination = first_flight["flights"][-1]["arrival_airport"]["id"]
+    out_date = first_flight["flight"][0]["departure_airport"]["time"].split(" ")[0]
     # A flight with 2 segments will have 1 stop
     nr_stops = len(first_flight["flights"]) - 1
 
@@ -38,9 +38,9 @@ def find_cheapest_flight(data, return_date):
             continue
         if price < lowest_price:
             lowest_price = price
-            origin = flight["flight"][0]["departure_airport"]["id"]
-            destination = flight["flight"][-1]["arrival_airport"]["id"]
-            out_date = flight["flight"][0]["departure_airport"]["time"].split("")[0]
+            origin = flight["flights"][0]["departure_airport"]["id"]
+            destination = flight["flights"][-1]["arrival_airport"]["id"]
+            out_date = flight["flight"][0]["departure_airport"]["time"].split(" ")[0]
             nr_stops = len(first_flight["flights"]) - 1
             cheapest_flight = FlightData(lowest_price, origin, destination, out_date, return_date, nr_stops)
             print(f"Lowest price to {destination} is GBP {lowest_price}")
