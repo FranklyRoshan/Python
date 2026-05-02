@@ -9,7 +9,7 @@ jobs:
     environment: Flight Deals Env # This line is required to access the environment's secrets
     defaults:
       run:
-        working-directory: python-projects/flight-deals 
+        working-directory: projects/flight-deals 
 
     steps:
       - name: Checkout code

@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: python-projects/iss-pass-alert
+        working-directory: projects/iss-pass-alert
 
     steps:
       - name: Checkout code

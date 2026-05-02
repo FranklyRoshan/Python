@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: python-projects/birthday-wisher
+        working-directory: projects/birthday-wisher
 
     steps:
       - name: Checkout code

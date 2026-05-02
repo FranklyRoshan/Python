@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: python-projects/rain-alert-SMS
+        working-directory: projects/rain-alert-SMS
 
     steps:
       - name: Checkout code

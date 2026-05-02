@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: python-projects/stock-news
+        working-directory: projects/stock-news
 
     steps:
       - name: Checkout code
