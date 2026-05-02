@@ -1,4 +1,4 @@
-# ==================== Resource links ====================
+==================== Resource links ====================
 
 API
 SerpApi - https://serpapi.com/dashboard
