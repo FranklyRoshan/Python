@@ -46,4 +46,4 @@ jobs:
           TWILIO_VIRTUAL_NUMBER: ${{ secrets.APTWILIO_VIRTUAL_NUMBERI }}
           TWILIO_WHATSAPP_NUMBER: ${{ secrets.TWILIO_WHATSAPP_NUMBER }}
   
-        run: python main.py
+        run: python prod.py
