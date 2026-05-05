@@ -35,5 +35,7 @@ jobs:
             TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
             VIRTUAL_TWILIO_NUMBER: ${{ secrets.VIRTUAL_TWILIO_NUMBER }}
             VERIFIED_NUMBER: ${{ secrets.VERIFIED_NUMBER }}
+            EMAIL_ID: ${{secrets.EMAIL_ID}}
+            EMAIL_ID_PASSWORD: ${{secrets.EMAIL_ID_PASSWORD}}
 
         run: python main.py
