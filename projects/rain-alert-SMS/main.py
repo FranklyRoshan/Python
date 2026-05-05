@@ -54,12 +54,14 @@ if will_rain:
     # print(message.body)
     print(message.status)
 
-    # # 6. SEND SMS VIA TWILIO MESSAGE VIA EMAIL
-    # with smtplib.SMTP("smtp.gmail.com") as connection:
-    #     connection.starttls()
-    #     connection.login(user=EMAIL_ID, password=EMAIL_ID_PASSWORD)
-    #     connection.sendmail(
-    #         from_addr=EMAIL_ID,
-    #         to_addrs=EMAIL_ID,
-    #         msg=f"subject: Weather Alert 🌧️ \n\n It's gonna rain 🌧️ today. Remember to bring an umbrella ☔ "
-    #     )
+    message_encoded = (f"subject: Weather Alert 🌧️ \n\n It's gonna rain 🌧️ today. Remember to bring an umbrella ☔ ").encode('utf-8')
+
+    # 6. SEND SMS VIA TWILIO MESSAGE VIA EMAIL
+    with smtplib.SMTP("smtp.gmail.com", 587) as connection:
+        connection.starttls()
+        connection.login(user=EMAIL_ID, password=EMAIL_ID_PASSWORD)
+        connection.sendmail(
+            from_addr=EMAIL_ID,
+            to_addrs=EMAIL_ID,
+            msg=message_encoded
+        )

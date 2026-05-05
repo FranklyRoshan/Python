@@ -47,5 +47,5 @@ class NotificationManager:
                 self.connection.sendmail(
                     from_addr=self.email,
                     to_addrs=email,
-                    msg=f"Subject: New Low Price Flight!\n\n{email_body}".encode('utf-8')
+                    msg=(f"Subject: New Low Price Flight!\n\n{email_body}").encode('utf-8')
                 )
