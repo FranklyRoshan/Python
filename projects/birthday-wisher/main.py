@@ -9,7 +9,6 @@ EMAIL_ID  = os.environ.get("EMAIL_ID")
 EMAIL_ID_PASSWORD = os.environ.get("EMAIL_ID_PASSWORD")
 EMAIL_PROVIDER_SMTP_ADDRESS = os.environ.get("EMAIL_PROVIDER_SMTP_ADDRESS")
 
-
 # today = (dt.datetime.today().day, dt.datetime.today().month)
 today = datetime.today()
 today_tuple = (today.month, today.day,)
@@ -28,9 +27,8 @@ if today_tuple in birthdays_dict:
     with open(file_path) as letter_file:
         contents = letter_file.read()
         contents = contents.replace("[NAME]", birthdays_person["name"])
-    
-    message_encoded = (f"subject: Happy Birthday {birthdays_person["name"]}!\n\n"
-                      f"{contents}").encode('utf-8')
+
+    message_encoded = f"Subject: Happy Birthday {birthdays_person['name']}!\n\n{contents}".encode('utf-8')    
 
 # 4. Send the letter generated in step 3 to that person's email address.
     with smtplib.SMTP(EMAIL_PROVIDER_SMTP_ADDRESS, 587) as connection:
