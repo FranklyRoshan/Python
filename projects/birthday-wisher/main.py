@@ -7,7 +7,7 @@ from datetime import datetime
 
 EMAIL_ID  = os.environ.get("EMAIL_ID")
 EMAIL_ID_PASSWORD = os.environ.get("EMAIL_ID_PASSWORD")
-EMAIL_PROVIDER_SMTP_ADDRESS = OS.environ.get("EMAIL_PROVIDER_SMTP_ADDRESS")
+EMAIL_PROVIDER_SMTP_ADDRESS = os.environ.get("EMAIL_PROVIDER_SMTP_ADDRESS")
 
 
 # today = (dt.datetime.today().day, dt.datetime.today().month)

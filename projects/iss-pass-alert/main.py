@@ -12,7 +12,7 @@ MY_LAT = 13.072090 # Your Latitude
 MY_LNG = 80.201859 # Your Longitude
 EMAIL_ID = os.environ.get("EMAIL_ID")
 EMAIL_ID_PASSWORD = os.environ.get("EMAIL_ID_PASSWORD")
-
+EMAIL_PROVIDER_SMTP_ADDRESS = os.environ.get("EMAIL_PROVIDER_SMTP_ADDRESS")
 
 def is_iss_overhead():
     """Check if the ISS position is within a 5° radius of your location."""
@@ -87,7 +87,7 @@ def is_night():
 message_encoded = (f"subject: Look up👆 \n\n The ISS is above you in the sky").encode('utf-8')
 
 if is_iss_overhead() and is_night():
-    with smtplib.SMTP("smtp.gmail.com", 587) as connection: 
+    with smtplib.SMTP(EMAIL_PROVIDER_SMTP_ADDRESS, 587) as connection: 
         connection.starttls()
         connection.login(user=EMAIL_ID, password=EMAIL_ID_PASSWORD)
         connection.sendmail(
