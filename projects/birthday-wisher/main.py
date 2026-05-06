@@ -7,6 +7,7 @@ from datetime import datetime
 
 EMAIL_ID  = os.environ.get("EMAIL_ID")
 EMAIL_ID_PASSWORD = os.environ.get("EMAIL_ID_PASSWORD")
+EMAIL_PROVIDER_SMTP_ADDRESS = OS.environ.get("EMAIL_PROVIDER_SMTP_ADDRESS")
 
 
 # today = (dt.datetime.today().day, dt.datetime.today().month)
@@ -32,7 +33,7 @@ if today_tuple in birthdays_dict:
                       f"{contents}").encode('utf-8')
 
 # 4. Send the letter generated in step 3 to that person's email address.
-    with smtplib.SMTP("smtp.gmail.com", 587) as connection:
+    with smtplib.SMTP(EMAIL_PROVIDER_SMTP_ADDRESS, 587) as connection:
         connection.starttls()
         connection.login(user=EMAIL_ID, password=EMAIL_ID_PASSWORD)
         connection.sendmail(
