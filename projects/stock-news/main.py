@@ -23,6 +23,7 @@ TWILIO_AUTH_TOKEN = os.environ.get("TWILIO_AUTH_TOKEN")
 VIRTUAL_TWILIO_NUMBER = os.environ.get("VIRTUAL_TWILIO_NUMBER")
 EMAIL_ID  = os.environ.get("EMAIL_ID")
 EMAIL_ID_PASSWORD = os.environ.get("EMAIL_ID_PASSWORD")
+EMAIL_PROVIDER_SMTP_ADDRESS = os.environ.get("EMAIL_PROVIDER_SMTP_ADDRESS")
 
 stock_params = {
     "function": "TIME_SERIES_DAILY",
@@ -88,10 +89,6 @@ if abs(diff_percent) > 5:
     # 9. - Send each article as a separate message via Twilio.
     client = Client(TWILIO_SID, TWILIO_AUTH_TOKEN)
 
-    with smtplib.SMTP("smtp.gmail.com", 587) as connection:
-    connection.starttls()
-    connection.login(user=EMAIL_ID, password=EMAIL_ID_PASSWORD)
-
     #Send a separate message with each article's title and description to your phone number.
     for article in formatted_articles:
         message = client.messages.create(
@@ -100,12 +97,14 @@ if abs(diff_percent) > 5:
             to=VERIFIED_NUMBER
         )
 
-        connection.sendmail(
-            from_addr=EMAIL_ID, 
-            to_addrs=EMAIL_ID,  
-            msg=f"Subject: TSLA Stocks News Update\n\n{article}".encode('utf-8')
-        )
-
+        with smtplib.SMTP(EMAIL_PROVIDER_SMTP_ADDRESS, 587) as connection:
+            connection.starttls()
+            connection.login(EMAIL_ID, EMAIL_ID_PASSWORD)
+            connection.sendmail(
+                from_addr=EMAIL_ID,
+                to_addrs=EMAIL_ID,
+                msg=f"Subject: TSLA Stocks News Update\n\n{article}".encode('utf-8')
+            )
     # print(message.body)
     print(message.status)
 

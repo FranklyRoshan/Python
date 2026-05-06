@@ -37,5 +37,6 @@ jobs:
             VERIFIED_NUMBER: ${{ secrets.VERIFIED_NUMBER }}
             EMAIL_ID: ${{secrets.EMAIL_ID}}
             EMAIL_ID_PASSWORD: ${{secrets.EMAIL_ID_PASSWORD}}
+            EMAIL_PROVIDER_SMTP_ADDRESS: ${{ secrets.EMAIL_PROVIDER_SMTP_ADDRESS }}
 
         run: python main.py
