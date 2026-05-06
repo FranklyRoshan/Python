@@ -17,7 +17,7 @@ class NotificationManager:
         self.whatsapp_number = os.environ["TWILIO_WHATSAPP_NUMBER"]
         # Set up Twilio Client and SMTP connection
         self.client = Client(os.environ['TWILIO_SID'], os.environ["TWILIO_AUTH_TOKEN"])
-        self.connection = smtplib.SMTP(os.environ["EMAIL_PROVIDER_SMTP_ADDRESS"], 465)
+        self.connection = smtplib.SMTP(os.environ["EMAIL_PROVIDER_SMTP_ADDRESS"], 587)
         
     def send_sms(self, message_body):
         message = self.client.messages.create(
