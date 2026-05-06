@@ -20,8 +20,9 @@ TWILIO_SID = os.environ.get("TWILIO_SID")
 TWILIO_AUTH_TOKEN = os.environ.get("TWILIO_AUTH_TOKEN")
 VIRTUAL_TWILIO_NUMBER = os.environ.get("VIRTUAL_TWILIO_NUMBER")
 VERIFIED_NUMBER = os.environ.get("VERIFIED_NUMBER")
-# EMAIL_ID = os.environ.get("EMAIL_ID")
-# EMAIL_ID_PASSWORD = os.environ.get("EMAIL_ID_PASSWORD")
+EMAIL_ID = os.environ.get("EMAIL_ID")
+EMAIL_ID_PASSWORD = os.environ.get("EMAIL_ID_PASSWORD")
+EMAIL_PROVIDER_SMTP_ADDRESS = os.environ.get("EMAIL_PROVIDER_SMTP_ADDRESS")
 
 # 2. WEATHER API CONFIG
 weather_params = {
@@ -43,8 +44,9 @@ for item in condition_code:
     if item < 700:
         will_rain = True
 
-# 5. SEND SMS VIA TWILIO
+
 if will_rain:
+    # 5. SEND SMS VIA TWILIO
     client = Client(TWILIO_SID, TWILIO_AUTH_TOKEN)
     message = client.messages.create(
         body="It's gonna rain 🌧️ today. Remember to bring an umbrella ☔",
@@ -54,10 +56,10 @@ if will_rain:
     # print(message.body)
     print(message.status)
 
-    message_encoded = (f"subject: Weather Alert 🌧️ \n\n It's gonna rain 🌧️ today. Remember to bring an umbrella ☔ ").encode('utf-8')
-
     # 6. SEND SMS VIA TWILIO MESSAGE VIA EMAIL
-    with smtplib.SMTP("smtp.gmail.com", 587) as connection:
+    message_encoded = (f"Subject: Weather Alert 🌧️ \n\n It's gonna rain 🌧️ today. Remember to bring an umbrella ☔ ").encode('utf-8')
+    
+    with smtplib.SMTP(EMAIL_PROVIDER_SMTP_ADDRESS, 587) as connection:
         connection.starttls()
         connection.login(user=EMAIL_ID, password=EMAIL_ID_PASSWORD)
         connection.sendmail(
