@@ -1,5 +1,45 @@
+TrackARP 
+🚄A professional-grade Python automation tool designed to monitor the IRCTC Advance Reservation Period (ARP). It sends proactive Email and SMS alerts exactly 24 hours before the 60-day booking window opens.
 
- Indian Railways trains, booking opens 60 days before the journey date at 08:00 AM IST.
+🛠️ Features
+Intelligent Scheduling: Monitors travel dates 61 days out to provide a "heads-up" alert 24 hours before booking opens.
+High-Signal Alerts:Email: Full travel insights, primary booking time (8:00 AM IST), and a 9-day backup schedule.
+SMS: Ultra-concise Twilio notifications for immediate awareness.
+Future-Proof: GitHub Actions workflow optimized for Node.js 24.
+
+💻 Tech Stack
+Language: Python 3.9+
+APIs: Twilio (SMS), SMTPLIB (Email)
+Automation: GitHub Actions (Cron: 30 1 * * * / 07:00 AM IST)
+Security: GitHub Secrets & python-dotenv
+
+🚀 Setup
+1. Environment VariablesCreate a .env file for local testing (or add as Secrets in GitHub):
+env
+MY_EMAIL=your_email@gmail.com
+MY_EMAIL_PASSWORD=your_app_password
+EMAIL_PROVIDER_SMTP_ADDRESS=://gmail.com
+TWILIO_SID=your_sid
+TWILIO_AUTH_TOKEN=your_token
+VIRTUAL_TWILIO_NUMBER=+123456789
+TWILIO_VERIFIED_NUMBER=+91987654321
+
+2. Installationbashpip install -r requirements.txt
+
+3. Folder StructureEnsure your repository matches this structure to avoid Exit Code 
+
+2:text├── .github/workflows/reminder.yml
+└── projects/
+    └── TrackARP/
+        ├── TrackARP.py
+        └── requirements.txt
+
+📅 Automation Logic
+Target Day: The script specifically tracks journeys falling on Firday.
+Timing: Alerts are dispatched at 07:00 AM IST, giving you 1 hour to prepare before the 08:00 AM IST IRCTC window opens.
+
+
+Indian Railways trains, booking opens 60 days before the journey date at 08:00 AM IST.
 
  📅 Booking Windows & TimesGeneral Quota:
  1. Opens 60 days in advance (excluding the travel date) at 08:00 AM.
@@ -16,6 +56,7 @@
  4. 📍 Note: Booking services are usually down for maintenance from 11:45 PM to 12:20 AM IST.
 
 
+Notes
  📅 Date (Day, Month, Year)
  1. %d: Day of the month as a zero-padded decimal (01 to 31)
  2. %-d: Day of the month as a decimal (1 to 31)
