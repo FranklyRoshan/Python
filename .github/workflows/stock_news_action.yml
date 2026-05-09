@@ -14,15 +14,16 @@ jobs:
         working-directory: projects/stock-news
 
     steps:
+    steps:
       - name: Checkout code
-        uses: actions/checkout@v4 
+        # Updated to v5 to align with Node 24 migrations
+        uses: actions/checkout@v5 
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        # Updated to v6 to align with Node 24 migrations
+        uses: actions/setup-python@v6
         with:
-          # This is your "Forever Latest" setting
-          python-version: '3' 
-          # Check for a newer version on every run
+          python-version: '3'
           check-latest: true 
 
       - name: Install dependencies
