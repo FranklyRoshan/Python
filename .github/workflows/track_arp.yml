@@ -29,10 +29,10 @@ jobs:
       - name: Run Python script
         env:
           MY_EMAIL: ${{ secrets.MY_EMAIL }}
-          MY_PASSWORD: ${{ secrets.MY_PASSWORD }}
+          MY_PASSWORD: ${{ secrets.MY_EMAIL_PASSWORD }}
           EMAIL_PROVIDER_SMTP_ADDRESS: ${{ secrets.EMAIL_PROVIDER_SMTP_ADDRESS }}
           TWILIO_SID: ${{ secrets.TWILIO_SID }}
           TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
           VIRTUAL_TWILIO_NUMBER: ${{ secrets.VIRTUAL_TWILIO_NUMBER }}
-          VERIFIED_NUMBER: ${{ secrets.VERIFIED_NUMBER }}
+          VERIFIED_NUMBER: ${{ secrets.TWILIO_VERIFIED_NUMBER }}
         run: python TrackARP.py
