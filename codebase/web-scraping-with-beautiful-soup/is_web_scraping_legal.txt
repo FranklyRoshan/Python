@@ -1,0 +1,21 @@
+A robots.txt file is a plain text document located in a website’s root directory (e.g., www.example.com/robots.txt) that
+provides instructions to web crawlers and bots about which parts of the site they are allowed to access and which should
+be avoided.  It is a foundational element of the Robots Exclusion Protocol, helping website owners manage crawler traffic
+to prevent server overload and guide search engines to focus on valuable content while skipping duplicate or irrelevant pages.
+
+Key aspects of robots.txt include:
+1. Voluntary Compliance: The protocol is not an official standard and compliance is voluntary; while respectable
+crawlers like Googlebot follow these rules, "bad bots" or scrapers may ignore them entirely.
+
+2. Crawling vs. Indexing: Robots.txt controls crawling (which pages bots can visit) but does not guarantee indexing
+(whether pages appear in search results).  To keep a page out of search results, you must use a noindex meta tag or
+password protection, as blocked pages can still appear in results if linked from elsewhere.
+
+3. Syntax: The file uses directives like User-agent (specifying the bot, e.g., * for all bots) and Disallow (specifying
+paths to block, e.g., /private/). It can also include Allow directives and Sitemap URLs to help bots discover important
+content.
+
+4. SEO Impact: Proper configuration helps manage crawl budget by directing bots away from low-value pages (like login or
+cart pages), ensuring they prioritize content that drives traffic and rankings.
+
+Resource: https://developers.google.com/search/docs/crawling-indexing/robots/intro
