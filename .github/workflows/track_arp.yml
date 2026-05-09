@@ -40,7 +40,7 @@ jobs:
           TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
           VIRTUAL_TWILIO_NUMBER: ${{ secrets.VIRTUAL_TWILIO_NUMBER }}
           VERIFIED_NUMBER: ${{ secrets.TWILIO_VERIFIED_NUMBER }}
-        run: python TrackARP.py
+        run: python main.py
     
       - name: List files for debugging
         run: ls -R
