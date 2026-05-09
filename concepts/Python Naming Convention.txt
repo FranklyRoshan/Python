@@ -1,0 +1,16 @@
+Python naming conventions are primarily defined by PEP 8, the official style guide, which emphasizes descriptive and readable names.  The core rules distinguish between different code elements using specific casing styles to ensure consistency and clarity across projects. 
+
+Variables and Functions
+
+snake_case: Use lowercase words separated by underscores (e.g., my_variable, calculate_sum). 
+Single Underscore (_var): Signals internal use or private attributes. 
+Double Underscore (__var): Triggers name mangling to avoid conflicts in subclasses. 
+Classes and Exceptions
+
+CapWords (PascalCase): Capitalize the first letter of each word without underscores (e.g., MyClass, HTTPServer). 
+Exception Classes: Should end with the suffix Error (e.g., ValueError). 
+Constants and Modules
+
+Constants: Use ALL_CAPS with underscores (e.g., MAX_SIZE, PYTHON_VERSION). 
+Modules: Use short, all-lowercase names, with underscores allowed for readability (e.g., math_operations.py). 
+Packages: Use short, all-lowercase names without underscores (e.g., mypackage).
