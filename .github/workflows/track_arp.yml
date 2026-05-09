@@ -19,11 +19,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@main 
 
-      # Note: Force Node24 for this specific step to clear the warning
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@main
         with:
           python-version: '3.9'
 
