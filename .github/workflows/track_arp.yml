@@ -1,0 +1,35 @@
+name: TrackARP Daily Check
+
+on:
+  schedule:
+    # Runs at 01:30 UTC (7:00 AM IST) every day
+    - cron: '30 1 * * *'
+  workflow_dispatch: # Allows you to run it manually for testing
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          pip install twilio python-dotenv
+
+      - name: Run script
+        env:
+          MY_EMAIL: ${{ secrets.MY_EMAIL }}
+          MY_PASSWORD: ${{ secrets.MY_PASSWORD }}
+          EMAIL_PROVIDER_SMTP_ADDRESS: ${{ secrets.EMAIL_PROVIDER_SMTP_ADDRESS }}
+          TWILIO_SID: ${{ secrets.TWILIO_SID }}
+          TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
+          VIRTUAL_TWILIO_NUMBER: ${{ secrets.VIRTUAL_TWILIO_NUMBER }}
+          VERIFIED_NUMBER: ${{ secrets.VERIFIED_NUMBER }}
+        run: python TrackARP.py
