@@ -8,16 +8,20 @@ on:
 jobs:
   run-script:
     runs-on: ubuntu-latest
+    
+    # Global environment variables for this job
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true 
+
     defaults:
       run:
         working-directory: projects/TrackARP
-      env:
-        FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true 
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # Note: Force Node24 for this specific step to clear the warning
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
