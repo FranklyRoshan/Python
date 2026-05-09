@@ -1,0 +1,52 @@
+
+ Indian Railways trains, booking opens 60 days before the journey date at 08:00 AM IST.
+
+ 📅 Booking Windows & TimesGeneral Quota:
+ 1. Opens 60 days in advance (excluding the travel date) at 08:00 AM.
+ 2. Tatkal AC: Opens 1 day before the train's departure from its source station at 10:00 AM.
+ 3. Tatkal Sleeper: Opens 1 day before departure at 11:00 AM.
+ 4. Current Booking: Available after chart preparation (usually 4 hours before departure)
+    until 30 minutes before the train leaves.
+
+ 💡 Pro-Tips for Successful Booking
+ 1. The "Master List": Pre-save passenger detail names, ages, and ID details in your IRCTC profile before the booking window o
+    pens to skip manual typing.
+ 2. Fast Logins: Log in to the Official IRCTC Portal at least 5 minutes before 08:00 AM, 10:00 AM, or 11:00 AM.
+ 3. Payment Readiness: Use UPI, IRCTC iPay or saved cards for the fastest checkout; Tatkal seats often vanish within seconds.
+ 4. 📍 Note: Booking services are usually down for maintenance from 11:45 PM to 12:20 AM IST.
+
+
+ 📅 Date (Day, Month, Year)
+ 1. %d: Day of the month as a zero-padded decimal (01 to 31)
+ 2. %-d: Day of the month as a decimal (1 to 31)
+ 3. %b: Abbreviated month name (Jan)
+ 4. %B: Full month name (January)
+ 5. %m: Month as a zero-padded decimal (01 to 12)
+ 6. %y: Year without century (26)
+ 7. %Y: Year with century (2026)
+
+⏰ Time (Hours, Minutes, Seconds)
+1. %H: Hour (24-hour clock) (00 to 23)
+2. %I: Hour (12-hour clock) (01 to 12)
+3. %p: Locale’s equivalent of either AM or PM
+4. %M: Minute as a zero-padded decimal (00 to 59)
+5. %S: Second as a zero-padded decimal (00 to 59)
+6. %f: Microsecond (6 digits) (000000 to 999999)
+
+🗓️ Weekdays & Calendar
+1. %a: Abbreviated weekday name (Mon)
+2. %A: Full weekday name (Monday)
+3. %w: Weekday as a decimal (0 is Sunday, 6 is Saturday)
+4. %j: Day of the year as a zero-padded decimal (001 to 366)
+5. %U: Week number of the year (Sunday as first day) (00 to 53)
+6. %W: Week number of the year (Monday as first day) (00 to 53)
+
+🌍 Timezone & Special
+1. %Z: Timezone name (IST, UTC)
+2. %z: UTC offset (+0530)
+3. %c: Locale’s appropriate date and time representation
+4. %x: Locale’s appropriate date representation
+5. %X: Locale’s appropriate time representation
+6. %%: A literal % character
+
+💡 Tip: Use %-d (Linux/Mac) or %#d (Windows) to remove leading zeros from numbers.
