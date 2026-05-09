@@ -19,12 +19,15 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@main 
+        uses: actions/checkout@v4 
 
       - name: Set up Python
-        uses: actions/setup-python@main
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.9'
+          # This is your "Forever Latest" setting
+          python-version: '3' 
+          # Check for a newer version on every run
+          check-latest: true 
 
       - name: Install dependencies
         run: |
