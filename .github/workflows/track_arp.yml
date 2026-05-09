@@ -41,3 +41,6 @@ jobs:
           VIRTUAL_TWILIO_NUMBER: ${{ secrets.VIRTUAL_TWILIO_NUMBER }}
           VERIFIED_NUMBER: ${{ secrets.TWILIO_VERIFIED_NUMBER }}
         run: python TrackARP.py
+    
+      - name: List files for debugging
+        run: ls -R
