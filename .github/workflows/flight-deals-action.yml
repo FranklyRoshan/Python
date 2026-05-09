@@ -49,3 +49,6 @@ jobs:
           TWILIO_WHATSAPP_NUMBER: ${{ secrets.TWILIO_WHATSAPP_NUMBER }}
   
         run: python main.py
+
+      - name: List files for debugging
+        run: ls -R

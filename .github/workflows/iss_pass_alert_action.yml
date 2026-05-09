@@ -33,3 +33,6 @@ jobs:
             EMAIL_ID_PASSWORD: ${{secrets.EMAIL_ID_PASSWORD}}
             EMAIL_PROVIDER_SMTP_ADDRESS: ${{ secrets.EMAIL_PROVIDER_SMTP_ADDRESS }}
         run: python main.py
+
+      - name: List files for debugging
+        run: ls -R
