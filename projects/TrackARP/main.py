@@ -1,19 +1,17 @@
 from datetime import datetime, timedelta, timezone
 from email.message import EmailMessage
-# pip install flask twilio
 from twilio.rest import Client
 from dotenv import load_dotenv
 import smtplib
 import os
 
-# Load environment variables
 load_dotenv()
 
 # --- Configuration ---
 ADVANCE_DAYS_FOR_REMINDER = 61
-DATE_FORMAT_FULL = "%A, %b %d, %I:%M %p IST"
 DATE_FORMAT_SHORT = "%a, %b %d"
 
+# Env vars
 EMAIL = os.environ.get("MY_EMAIL")
 PASSWORD = os.environ.get("MY_PASSWORD")
 SMTP_SERVER = os.environ.get("EMAIL_PROVIDER_SMTP_ADDRESS")
@@ -22,92 +20,81 @@ TWILIO_AUTH_TOKEN = os.environ.get("TWILIO_AUTH_TOKEN")
 VIRTUAL_TWILIO_NUMBER = os.environ.get("VIRTUAL_TWILIO_NUMBER")
 VERIFIED_NUMBER = os.environ.get("VERIFIED_NUMBER")
 
-def send_email_alert(subject, body):
-    """Handles the SMTP connection and sends the email."""
+def send_alerts(subject, email_body, sms_body):
+    """Consolidated alert sender."""
+    # Email
     try:
         msg = EmailMessage()
         msg["Subject"] = subject
         msg["From"] = EMAIL
         msg["To"] = EMAIL
-        msg.set_content(body)
-
+        msg.set_content(email_body)
         with smtplib.SMTP(SMTP_SERVER, 587) as connection:
             connection.starttls()
             connection.login(EMAIL, PASSWORD)
             connection.send_message(msg)
         print("✅ Email sent successfully!")
     except Exception as e:
-        print(f"❌ Failed to send email: {e}")
+        print(f"❌ Email Failed: {e}")
 
-def send_sms_alert(msg_body):
-    """Sends a concise SMS notification."""
+    # SMS
     try:
         client = Client(TWILIO_SID, TWILIO_AUTH_TOKEN)
-        client.messages.create(
-            body= msg_body,
-            from_= VIRTUAL_TWILIO_NUMBER,
-            to= VERIFIED_NUMBER,
-        )
-        # print(f"Message status: {message.status}")
+        client.messages.create(body=sms_body, from_=VIRTUAL_TWILIO_NUMBER, to=VERIFIED_NUMBER)
         print("✅ SMS sent successfully!")
     except Exception as e:
-        print(f"❌ Failed to send sms: {e}")
+        print(f"❌ SMS Failed: {e}")
 
 def generate_booking_schedule():
-    # Force IST (UTC +5.5)
     ist_offset = timezone(timedelta(hours=5, minutes=30))
     today = datetime.now(ist_offset) 
 
-    # The date the train actually departs
     journey_date = today + timedelta(days=ADVANCE_DAYS_FOR_REMINDER)
-    # The date you must book (Tomorrow)
     booking_date = today + timedelta(days=1)
+    day_name = journey_date.strftime("%A")
 
-    # Logic: Only trigger if the target journey is a Friday
-    if journey_date.strftime("%A") == "Saturday":
+    print(f"--- Run Summary ---")
+    print(f"System Time (IST): {today.strftime('%Y-%m-%d %H:%M')}")
+    print(f"Checking Journey: {day_name}, {journey_date.strftime('%b %d')}")
 
-        # Generating subsequent dates with list comprehension
-        upcoming_options = [
-            (journey_date + timedelta(days=i)).strftime(DATE_FORMAT_SHORT)
-            for i in range(1, 10)
-        ]
-        options_str = "\n   - ".join(upcoming_options)
+    # Determine if today is a target check day
+    if day_name not in ["Friday", "Monday"]:
+        print(f"⏭️ Skipping: {day_name} journeys do not require alerts today.")
+        print(f"-------------------")
+        return
 
-        # --- Constructing the Email Body ---
-        subject = f"🚨 Action Required: Booking Window Opens Tomorrow ({booking_date.strftime('%b %d')})"
-        email_body = (
-            f"Hello Frank,\n\n"
-            f"Heads up!\n\n"
-            f"Tomorrow, the primary booking window is going to open.\n\n"
-            f"📍 TARGET JOURNEY:\n"
-            f"   {journey_date.strftime('%A, %b %d, %Y')}\n\n"
-            f"⏰ BOOKING ACTION TIME:\n"
-            f"   Tomorrow, {booking_date.strftime('%b %d')} at 08:00 AM IST sharp.\n\n"
-            f"📋 SUBSEQUENT TRAVEL INSIGHTS:\n"
-            f"   If you miss the Friday slot, here are the next available dates:\n"
-            f"   - {options_str}\n\n"
-            f"💡 TO DO:\n"
-            f"   - Set an alarm for tomorrow 7:55 AM!\n\n"
-            f"Good luck with the booking!"
-        )
+    # Efficiency: Calculate these once as they are used in both types of alerts
+    upcoming_options = [(journey_date + timedelta(days=i)).strftime(DATE_FORMAT_SHORT) for i in range(1, 10)]
+    options_str = "\n   - ".join(upcoming_options)
+    quick_backups = ", ".join(upcoming_options[:3])
+    sms_date = journey_date.strftime("%b %d (%a)")
+    
+    # Set type-specific details
+    is_departure = (day_name == "Friday")
+    type_label = "DEPARTURE" if is_departure else "RETURN"
+    extra_to_do = "- Set an alarm for 7:55 AM!" if is_departure else "- Confirm return time with the group!"
 
-        # --- SMS Body (Ultra-Concise for Twilio) ---
-        # Using a cleaner date format without the timestamp
-        sms_date = journey_date.strftime("%b %d (%a)")
+    # Unified Content Generation
+    subject = f"🚨 Action Required: {type_label.capitalize()} Booking Window Opens Tomorrow ({booking_date.strftime('%b %d')})"
+    
+    email_body = (
+        f"Hello Frank,\n\n"
+        f"Tomorrow, the {type_label} booking window opens.\n\n"
+        f"📍 TARGET JOURNEY:\n   {journey_date.strftime('%A, %b %d, %Y')}\n\n"
+        f"⏰ BOOKING ACTION TIME:\n   Tomorrow, {booking_date.strftime('%b %d')} at 08:00 AM IST sharp.\n\n"
+        f"📋 SUBSEQUENT TRAVEL INSIGHTS:\n   If you miss this slot, here are backups:\n   - {options_str}\n\n"
+        f"💡 TO DO:\n   {extra_to_do}\n   - Good luck with the booking!"
+    )
 
-        # Taking only the first 3 subsequent dates to keep SMS short
-        quick_backups = ", ".join(upcoming_options[:3])
+    sms_body = f"TRAIN {type_label}:\nTarget: {sms_date}\nAction: Tomorrow 8AM IST\nNext: {quick_backups}..."
 
-        sms_body = (
-            f"TRAIN ALERT:\n"
-            f"Target: {sms_date}\n"
-            f"Action: Tomorrow 8AM IST\n"
-            f"Next: {quick_backups}..."
-        )
-
-        print(f"Processing reminder for {journey_date.date()}...")
-        send_email_alert(subject, email_body)
-        send_sms_alert(sms_body)
+    # Send consolidated alerts
+    print(f"✅ Processing {type_label} reminder...")
+    send_alerts(subject, email_body, sms_body)
+    print(f"-------------------")
 
 if __name__ == "__main__":
-    generate_booking_schedule()
+    try:
+        generate_booking_schedule()
+    except Exception as global_err:
+        print(f"💥 Critical Script Failure: {global_err}")
