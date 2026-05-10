@@ -14,7 +14,6 @@ jobs:
         working-directory: projects/stock-news
 
     steps:
-    steps:
       - name: Checkout code
         # Updated to v5 to align with Node 24 migrations
         uses: actions/checkout@v5 
