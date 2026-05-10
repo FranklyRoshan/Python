@@ -61,7 +61,7 @@ def generate_booking_schedule():
     booking_date = today + timedelta(days=1)
 
     # Logic: Only trigger if the target journey is a Friday
-    if journey_date.strftime("%A") == "Thrusday":
+    if journey_date.strftime("%A") == "Friday":
 
         # Generating subsequent dates with list comprehension
         upcoming_options = [
