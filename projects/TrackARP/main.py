@@ -54,7 +54,10 @@ def send_sms_alert(msg_body):
         print(f"❌ Failed to send sms: {e}")
 
 def generate_booking_schedule():
-    today = datetime.now()
+    # Force IST (UTC +5.5)
+    ist_offset = timezone(timedelta(hours=5, minutes=30))
+    today = datetime.now(ist_offset) 
+    
     # The date the train actually departs
     journey_date = today + timedelta(days=ADVANCE_DAYS_FOR_REMINDER)
     # The date you must book (Tomorrow)
