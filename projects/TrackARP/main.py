@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from email.message import EmailMessage
 # pip install flask twilio
 from twilio.rest import Client
@@ -57,7 +57,7 @@ def generate_booking_schedule():
     # Force IST (UTC +5.5)
     ist_offset = timezone(timedelta(hours=5, minutes=30))
     today = datetime.now(ist_offset) 
-    
+
     # The date the train actually departs
     journey_date = today + timedelta(days=ADVANCE_DAYS_FOR_REMINDER)
     # The date you must book (Tomorrow)
