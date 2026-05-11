@@ -1,4 +1,4 @@
 requests
 flask
-twilio
-python-dotenv
+python-dotenv>=1.0.0
+twilio>=8.0.0

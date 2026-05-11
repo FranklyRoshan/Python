@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta, timezone
+from zoneinfo import ZoneInfo
 from email.message import EmailMessage
 from twilio.rest import Client
 from dotenv import load_dotenv
@@ -46,8 +47,9 @@ def send_alerts(subject, email_body, sms_body):
         print(f"❌ SMS Failed: {e}")
 
 def generate_booking_schedule():
-    ist_offset = timezone(timedelta(hours=5, minutes=30))
-    today = datetime.now(ist_offset) 
+    # ist_offset = timezone(timedelta(hours=5, minutes=30))
+    # today = datetime.now(ist_offset) 
+    today = datetime.now(ZoneInfo("Asia/Kolkata"))
 
     journey_date = today + timedelta(days=ADVANCE_DAYS_FOR_REMINDER)
     booking_date = today + timedelta(days=1)
