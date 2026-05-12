@@ -14,3 +14,21 @@ Constants and Modules
 Constants: Use ALL_CAPS with underscores (e.g., MAX_SIZE, PYTHON_VERSION). 
 Modules: Use short, all-lowercase names, with underscores allowed for readability (e.g., math_operations.py). 
 Packages: Use short, all-lowercase names without underscores (e.g., mypackage).
+
+Python project naming conventions are primarily governed by the official PEP 8 Style Guide, which emphasizes readability and consistency.
+
+Following PEP 8 and standard packaging practices, here is how you should name your project elements:
+
+1. Project Name (Top-level folder/PyPI): Typically all-lowercase and can use hyphens (e.g., flask-cors).
+2. Package Name (Import name): Short, all-lowercase, and ideally no underscores (e.g., flask_cors often becomes flask_cors in code). 
+3. While underscores are allowed, they are discouraged for top-level packages to avoid confusion.
+4. Modules (Files): Short, all-lowercase with underscores (snake_case) if it improves readability (e.g., data_loader.py).
+5. Classes: Use CapWords (PascalCase), where each word starts with a capital letter (e.g., MyClass).
+6. Functions & Variables: Use all-lowercase words separated by underscores (snake_case) (e.g., calculate_total).
+7. Constants: Use all-uppercase letters with underscores (e.g., MAX_RETRIES).
+
+Key Considerations
+1. Avoid Ambiguity: Don't use names that clash with built-in Python modules (e.g., avoid naming a file list.py or requests.py).
+2. Be Descriptive: Names should be concise but reflect functionality. Avoid single-character names like l, O, or I, which can be confused with numbers.
+3. Project Structure: A standard starter layout often includes a src/<project_name>/ folder for code and a separate tests/ folder.
+4. Internal Consistency: While PEP 8 is the gold standard, it is more important for your specific project to be internally consistent
