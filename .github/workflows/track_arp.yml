@@ -34,11 +34,11 @@ jobs:
 
       - name: Run Python script
         env:
-          MY_EMAIL: ${{ secrets.MY_EMAIL }}
-          MY_EMAIL_PASSWORD: ${{ secrets.MY_EMAIL_PASSWORD }}
+          EMAIL_ID: ${{ secrets.EMAIL_ID }}
+          EMAIL_ID_PASSWORD: ${{ secrets.EMAIL_ID_PASSWORD }}
           EMAIL_PROVIDER_SMTP_ADDRESS: ${{ secrets.EMAIL_PROVIDER_SMTP_ADDRESS }}
           TWILIO_SID: ${{ secrets.TWILIO_SID }}
           TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
           VIRTUAL_TWILIO_NUMBER: ${{ secrets.VIRTUAL_TWILIO_NUMBER }}
-          TWILIO_VERIFIED_NUMBER: ${{ secrets.TWILIO_VERIFIED_NUMBER }}
+          VERIFIED_NUMBER: ${{ secrets.VERIFIED_NUMBER }}
         run: python main.py

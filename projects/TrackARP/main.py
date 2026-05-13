@@ -13,13 +13,13 @@ ADVANCE_DAYS_FOR_REMINDER = 61
 DATE_FORMAT_SHORT = "%a, %b %d"
 
 # Env vars
-EMAIL = os.environ.get("MY_EMAIL")
-PASSWORD = os.environ.get("MY_EMAIL_PASSWORD")
+EMAIL = os.environ.get("EMAIL_ID")
+PASSWORD = os.environ.get("EMAIL_ID_PASSWORD")
 SMTP_SERVER = os.environ.get("EMAIL_PROVIDER_SMTP_ADDRESS")
 TWILIO_SID = os.environ.get("TWILIO_SID")
 TWILIO_AUTH_TOKEN = os.environ.get("TWILIO_AUTH_TOKEN")
 VIRTUAL_TWILIO_NUMBER = os.environ.get("VIRTUAL_TWILIO_NUMBER")
-VERIFIED_NUMBER = os.environ.get("TWILIO_VERIFIED_NUMBER")
+VERIFIED_NUMBER = os.environ.get("VERIFIED_NUMBER")
 
 def send_alerts(subject, email_body, sms_body):
     """Consolidated alert sender."""
