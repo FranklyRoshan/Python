@@ -95,21 +95,21 @@ def generate_booking_schedule():
     send_alerts(subject, email_body, sms_body)
     print(f"-------------------")
 
-# if __name__ == "__main__":
-#     try:
-#         generate_booking_schedule()
-#     except Exception as global_err:
-#         print(f"💥 Critical Script Failure: {global_err}")
-
 if __name__ == "__main__":
-    # --- TEST MODE ---
     try:
-        print("🚀 Starting Connection Test...")
-        test_subject = "Test Alert - System Check"
-        test_email = "This is a test email to verify your SMTP settings."
-        test_sms = "Test SMS: Your Twilio integration is working!"
-        
-        send_alerts(test_subject, test_email, test_sms)
-        print("🏁 Test sequence complete.")
+        generate_booking_schedule()
     except Exception as global_err:
         print(f"💥 Critical Script Failure: {global_err}")
+
+# if __name__ == "__main__":
+#     # --- TEST MODE ---
+#     try:
+#         print("🚀 Starting Connection Test...")
+#         test_subject = "Test Alert - System Check"
+#         test_email = "This is a test email to verify your SMTP settings."
+#         test_sms = "Test SMS: Your Twilio integration is working!"
+        
+#         send_alerts(test_subject, test_email, test_sms)
+#         print("🏁 Test sequence complete.")
+#     except Exception as global_err:
+#         print(f"💥 Critical Script Failure: {global_err}")
