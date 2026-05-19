@@ -67,3 +67,8 @@ if will_rain:
             to_addrs=EMAIL_ID,
             msg=message_encoded
         )
+
+    print("Email sent successfully")
+    
+else:
+    print("No rain expected in the next 12 hours.")

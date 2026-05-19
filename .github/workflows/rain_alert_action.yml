@@ -21,15 +21,17 @@ jobs:
         uses: actions/setup-python@v5
         with:
           # This is your "Forever Latest" setting
-          python-version: '3' 
+          python-version: '3.x' 
           # Check for a newer version on every run
           check-latest: true 
+          cache: 'pip'          # Caches dependencies to save time
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           # pip install requests flask twilio
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; else pip install requests twilio; fi
 
       - name: Run Python script 
         env:
