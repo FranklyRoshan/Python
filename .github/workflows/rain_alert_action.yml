@@ -20,9 +20,9 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'  # OPTIMIZED: Stable version avoids API check overhead
-          cache: 'pip'            # OPTIMIZED: Works seamlessly with requirements.txt
-          cache-dependency-path: 'projects/rain-alert-SMS/requirements.txt' # FIXED: Crucial for subdirectories
+          python-version: '3.12'  
+          cache: 'pip'            # Works seamlessly with requirements.txt
+          cache-dependency-path: 'projects/rain-alert-SMS/requirements.txt' # Crucial for subdirectories
 
       - name: Install dependencies
         run: |
