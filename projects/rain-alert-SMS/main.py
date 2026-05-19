@@ -53,11 +53,11 @@ if will_rain:
         from_= VIRTUAL_TWILIO_NUMBER,
         to= VERIFIED_NUMBER,
     )
-    
+
     print(f"SMS Status: {message.status}")
 
     # 6. SEND SMS VIA TWILIO MESSAGE VIA EMAIL
-    message_encoded = (f"Subject: Weather Alert 🌧️ \n\n It's gonna rain 🌧️ today. Remember to bring an umbrella ☔ ").encode('utf-8')
+    message_encoded = (f"Subject: Weather Alert 🌧️ \n\n It's gonna rain 🌧️ today. \n Remember to bring an umbrella ☔ ").encode('utf-8')
     
     with smtplib.SMTP(EMAIL_PROVIDER_SMTP_ADDRESS, 587) as connection:
         connection.starttls()
