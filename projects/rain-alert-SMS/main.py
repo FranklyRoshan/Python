@@ -6,7 +6,7 @@ import os
 import requests
 # pip install flask twilio
 from twilio.rest import Client
-# import smtplib
+import smtplib
 
 # OpenWeatherMap API 
 OWM_Endpoint = "https://api.openweathermap.org/data/2.5/forecast" # 3-hour / 5-day Forecast API
@@ -53,8 +53,8 @@ if will_rain:
         from_= VIRTUAL_TWILIO_NUMBER,
         to= VERIFIED_NUMBER,
     )
-    # print(message.body)
-    print(message.status)
+    
+    print(f"SMS Status: {message.status}")
 
     # 6. SEND SMS VIA TWILIO MESSAGE VIA EMAIL
     message_encoded = (f"Subject: Weather Alert 🌧️ \n\n It's gonna rain 🌧️ today. Remember to bring an umbrella ☔ ").encode('utf-8')
@@ -69,6 +69,6 @@ if will_rain:
         )
 
     print("Email sent successfully")
-    
+
 else:
     print("No rain expected in the next 12 hours.")

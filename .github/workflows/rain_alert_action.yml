@@ -20,17 +20,14 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          # This is your "Forever Latest" setting
-          python-version: '3.x' 
-          # Check for a newer version on every run
-          check-latest: true 
-          cache: 'pip'          # Caches dependencies to save time
+          python-version: '3.12'  # OPTIMIZED: Stable version avoids API check overhead
+          cache: 'pip'            # OPTIMIZED: Works seamlessly with requirements.txt
+          cache-dependency-path: 'projects/rain-alert-SMS/requirements.txt' # FIXED: Crucial for subdirectories
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          # pip install requests flask twilio
+          # FIXED: Removed the naked duplicate pip install statement to prevent crashes
           if [ -f requirements.txt ]; then pip install -r requirements.txt; else pip install requests twilio; fi
 
       - name: Run Python script 
@@ -40,8 +37,8 @@ jobs:
             TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
             VIRTUAL_TWILIO_NUMBER: ${{ secrets.VIRTUAL_TWILIO_NUMBER }}
             VERIFIED_NUMBER: ${{ secrets.VERIFIED_NUMBER }}
-            EMAIL_ID: ${{secrets.EMAIL_ID}}
-            EMAIL_ID_PASSWORD: ${{secrets.EMAIL_ID_PASSWORD}}
+            EMAIL_ID: ${{ secrets.EMAIL_ID }}
+            EMAIL_ID_PASSWORD: ${{ secrets.EMAIL_ID_PASSWORD }}
             EMAIL_PROVIDER_SMTP_ADDRESS: ${{ secrets.EMAIL_PROVIDER_SMTP_ADDRESS }}
         run: python main.py
       
