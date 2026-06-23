@@ -14,7 +14,7 @@ Modules are Python code libraries you can include in your project.
 Check if PIP is Installed
 Navigate your command line to the location of Python's script directory, and type the following:
 
-ExampleGet your own Python Server
+Example
 Check PIP version:
 """
 # C:\Users\Your Name\AppData\Local\Programs\Python\Python36-32\Scripts>pip --version

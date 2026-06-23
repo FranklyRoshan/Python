@@ -296,7 +296,7 @@ in 	Returns True if a sequence with the specified value is present in the object
 not in	Returns True if a sequence with the specified value is not present in the object
 """
 """
-ExampleGet your own Python Server
+Example
 Check if "banana" is present in a list:
 """
 fruits = ["apple", "banana", "cherry"]
