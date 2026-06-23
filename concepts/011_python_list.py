@@ -578,7 +578,7 @@ The expression in the example above says:
 Sort List Alphanumerically
 List objects have a sort() method that will sort the list alphanumerically, ascending, by default:
 
-ExampleGet your own Python Server
+Example
 Sort the list alphabetically:
 """
 
@@ -710,7 +710,7 @@ There are several ways to join, or concatenate, two or more lists in Python.
 
 One of the easiest ways are by using the + operator.
 
-ExampleGet your own Python Server
+Example
 Join two list:
 """
 list1 = ["a", "b", "c"]
