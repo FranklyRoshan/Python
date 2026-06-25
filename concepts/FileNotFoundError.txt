@@ -1,0 +1,23 @@
+====================================================
+FileNotFoundError Solution
+
+This FileNotFoundError occurs because Python cannot locate demofile.txt in the expected directory.  To resolve this, verify the file actually exists and is not misspelled (including case sensitivity on Linux/macOS) or missing an extension. 
+
+Common Causes and Solutions:
+
+Incorrect Relative Path: Python looks for the file in the current working directory (where the script is run from), not necessarily where the script file is located.  Use import os; print(os.getcwd()) to verify the active directory.
+Use Absolute Paths: Specify the full path to the file, such as 'C:\Users\Alice\demofile.txt' (Windows) or '/home/alice/demofile.txt' (Linux/macOS). Prefix Windows paths with r to treat backslashes as literal characters (e.g., r'C:\path\to\file.txt'). 
+Anchor to Script Location: For robustness, use the pathlib module to resolve paths relative to the script's own location, ensuring the file is found regardless of where the script is executed from:
+from pathlib import Path
+
+# Get the directory where this script is located
+script_dir = Path(__file__).parent
+
+# Construct the absolute path to the file
+file_path = script_dir / 'demofile.txt'
+
+# Read the file
+content = file_path.read_text()
+
+Check File Existence: You can check if the file exists before opening it using os.path.exists('demofile.txt') or Path('demofile.txt').exists().
+====================================================
