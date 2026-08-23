@@ -1,4 +1,4 @@
-name: TrackARP Daily Check
+name: TrackARP Twilio 
 
 on:
   schedule:
