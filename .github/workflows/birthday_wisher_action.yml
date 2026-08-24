@@ -1,4 +1,4 @@
-name: Birthday Wisher Daily Python Script
+name: Birthday Wisher Daily Workflow
 
 on:
   schedule:
