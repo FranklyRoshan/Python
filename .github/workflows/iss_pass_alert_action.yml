@@ -1,4 +1,4 @@
-name: ISS Pass Alert Daily Python Script
+name: ISS Pass Alert Daily Workflow
 
 on:
   schedule:
