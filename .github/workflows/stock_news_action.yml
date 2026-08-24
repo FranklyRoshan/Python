@@ -1,4 +1,4 @@
-name: Stock News Daily Python Script
+name: Stock News Daily Workflow
 
 on:
   schedule:
