@@ -59,5 +59,5 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
 
         run: |
-          # python main.py
-          python test_connection.py
+          python main.py
+          # python test_connection.py
