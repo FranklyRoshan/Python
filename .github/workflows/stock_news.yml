@@ -9,6 +9,7 @@ on:
 jobs:
   run-script:
     runs-on: ubuntu-latest
+    environment: Flight Deals Env
     defaults:
       run:
         working-directory: projects/stock-news
