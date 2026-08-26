@@ -50,9 +50,9 @@ jobs:
       - name: Run Python script
         env:
           # Email
-          EMAIL_ID: ${{ secrets.EMAIL_ID }}
-          EMAIL_ID_PASSWORD: ${{ secrets.EMAIL_ID_PASSWORD }}
-          EMAIL_PROVIDER_SMTP_ADDRESS: ${{ secrets.EMAIL_PROVIDER_SMTP_ADDRESS }}
+          EMAIL: ${{ secrets.EMAIL }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+          SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
 
           # Telegram
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
