@@ -12,9 +12,9 @@ load_dotenv()
 # Configuration
 # ============================================================
 
-EMAIL = os.getenv("EMAIL_ID")
-PASSWORD = os.getenv("EMAIL_ID_PASSWORD")
-SMTP_SERVER = os.getenv("EMAIL_PROVIDER_SMTP_ADDRESS")
+EMAIL: ${{ secrets.EMAIL }}
+PASSWORD: ${{ secrets.PASSWORD }}
+SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
 
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
