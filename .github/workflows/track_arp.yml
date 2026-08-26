@@ -11,7 +11,7 @@ on:
 jobs:
   run-script:
     runs-on: ubuntu-latest
-    environment: production
+    environment: track_arp
 
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
