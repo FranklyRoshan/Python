@@ -21,9 +21,9 @@ DATE_FORMAT_SHORT = "%a, %b %d"
 BACKUP_DAYS = 5
 
 # Email
-EMAIL = os.environ.get("EMAIL_ID")
-PASSWORD = os.environ.get("EMAIL_ID_PASSWORD")
-SMTP_SERVER = os.environ.get("EMAIL_PROVIDER_SMTP_ADDRESS")
+EMAIL: ${{ secrets.EMAIL }}
+PASSWORD: ${{ secrets.PASSWORD }}
+SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
 
 # Telegram
 TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
