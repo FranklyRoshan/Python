@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
 # ============================================================
 # Configuration
 # ============================================================
@@ -15,8 +16,12 @@ EMAIL = os.getenv("EMAIL_ID")
 PASSWORD = os.getenv("EMAIL_ID_PASSWORD")
 SMTP_SERVER = os.getenv("EMAIL_PROVIDER_SMTP_ADDRESS")
 
-TELEGRAM_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+
+# Check whether Telegram environment variables are loaded
+print(f"Telegram token loaded: {bool(TELEGRAM_BOT_TOKEN)}")
+print(f"Telegram chat ID loaded: {bool(TELEGRAM_CHAT_ID)}")
 
 
 # ============================================================
@@ -24,10 +29,11 @@ TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 # ============================================================
 
 def test_email():
-    """Send a test email to verify SMTP configuration."""
+    """Send a test email to verify the SMTP configuration."""
 
     try:
         message = EmailMessage()
+
         message["Subject"] = "TrackARP - Test Email"
         message["From"] = EMAIL
         message["To"] = EMAIL
@@ -40,7 +46,12 @@ def test_email():
             "🚆 TrackARP"
         )
 
-        with smtplib.SMTP(SMTP_SERVER, 587) as connection:
+        with smtplib.SMTP(
+            SMTP_SERVER,
+            587,
+            timeout=10
+        ) as connection:
+
             connection.starttls()
             connection.login(EMAIL, PASSWORD)
             connection.send_message(message)
@@ -52,35 +63,72 @@ def test_email():
 
 
 # ============================================================
+# Send Telegram Notification
+# ============================================================
+
+def send_telegram(message):
+    """
+    Send a message to Telegram using the Telegram Bot API.
+
+    Raises:
+        ValueError:
+            If the Telegram bot token or chat ID is missing.
+
+        RuntimeError:
+            If the Telegram API rejects the request.
+    """
+
+    if not TELEGRAM_BOT_TOKEN:
+        raise ValueError("TELEGRAM_BOT_TOKEN is missing.")
+
+    if not TELEGRAM_CHAT_ID:
+        raise ValueError("TELEGRAM_CHAT_ID is missing.")
+
+    telegram_url = (
+        f"https://api.telegram.org/bot"
+        f"{TELEGRAM_BOT_TOKEN}/sendMessage"
+    )
+
+    data = {
+        "chat_id": TELEGRAM_CHAT_ID,
+        "text": message,
+    }
+
+    print("📱 Sending Telegram notification...")
+
+    response = requests.post(
+        telegram_url,
+        data=data,
+        timeout=10,
+    )
+
+    response_data = response.json()
+
+    if response_data.get("ok"):
+        print("✅ Telegram notification sent successfully!")
+
+    else:
+        raise RuntimeError(
+            f"Telegram API error: {response_data}"
+        )
+
+
+# ============================================================
 # Test Telegram
 # ============================================================
 
 def test_telegram():
-    """Send a test Telegram message to verify the bot."""
+    """Test the Telegram notification function."""
 
     try:
-        url = (
-            f"https://api.telegram.org/"
-            f"bot{TELEGRAM_TOKEN}/sendMessage"
-        )
-
-        message = (
+        test_message = (
             "🚆 TrackARP Test Message\n\n"
+            "This message is being sent using the "
+            "same send_telegram() function as main.py.\n\n"
             "✅ Telegram notification is working correctly!"
         )
 
-        response = requests.post(
-            url,
-            data={
-                "chat_id": TELEGRAM_CHAT_ID,
-                "text": message
-            }
-        )
-
-        if response.ok:
-            print("✅ Test Telegram message sent successfully.")
-        else:
-            print(f"❌ Telegram failed: {response.text}")
+        send_telegram(test_message)
 
     except Exception as error:
         print(f"❌ Telegram failed: {error}")
@@ -94,7 +142,12 @@ if __name__ == "__main__":
 
     print("🚀 Starting TrackARP notification test...\n")
 
+    # Test Email
     test_email()
+
+    print()
+
+    # Test Telegram
     test_telegram()
 
     print("\n🏁 Test completed.")
